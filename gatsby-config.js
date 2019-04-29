@@ -30,8 +30,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-drupal',
       options: {
-        baseUrl: 'http://gavinvaught.local.com/',
-        apiBase: 'jsonapi', // endpoint of Drupal server
+        baseUrl: 'http://gavinvaught.com/',
+        apiBase: 'api', // endpoint of Drupal server
       },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
