@@ -1,0 +1,117 @@
+// Custom Mixins
+
+// Flexbox shorthand
+@mixin contains($disp: flex, $direction: row, $wrap: nowrap, $justify: flex-start, $items: stretch, $content: stretch) {
+
+  // flex or inline-flex
+  display: $disp;
+  // row | row-reverse | column | column-reverse
+  flex-direction: $direction;
+  // nowrap | wrap | wrap-reverse
+  flex-wrap: $wrap;
+  // flex-start | flex-end | center | space-between | space-around
+  justify-content: $justify;
+  // flex-start | flex-end | center | baseline | stretch
+  align-items: $items;
+  // flex-start | flex-end | center | space-between | space-around | stretch
+  align-content: $content;
+}
+
+// Image desaturation
+// $scale: 1; // full desaturation
+// $scale: 0; // no desaturation
+// 0 < $scale < 1 // partial desaturation; IE6-9 will show full desaturation
+@mixin desaturate-image($amount: 1) {
+  @if $amount == 0 {
+    filter: none; /* Reset filter */
+    } @else {
+      filter: gray; /* IE6-9 */
+      filter: grayscale($amount); /* Firefox 35+ */
+    }
+  -webkit-filter: grayscale($amount); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+// Image Desaturate Hover effects
+@mixin image-desaturation($starting: 1, $hover: 0) {
+  @include desaturate-image($starting);
+  @if $starting != $hover {
+    &:hover {
+      @include desaturate-image($hover);
+    }
+  }
+}
+
+// Responsive Font Sizes 
+// option 1
+@mixin font-responsive($fr-min, $fr-max, $content-max: $max-page-width) {
+  $fr-min: strip-unit($fr-min);
+  $fr-max: strip-unit($fr-max);
+  $content-max: strip-unit($content-max);
+
+  $fr-default-ratio: $fr-max / $content-max;
+  $fr-default: $fr-default-ratio * 100;
+  $min-query: $fr-min / $fr-default-ratio;
+
+  font-size: $fr-default+vw;
+  @media (max-width: $min-query+px) {
+    font-size: $fr-min+px;
+  }
+  @media (min-width: $content-max+px) {
+    font-size: $fr-max+px;
+  }
+}
+// option 2
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// CRT-like animations
+// Applied to a ul, the li's will become inline with $spacing between them.
+@mixin li-inline($spacing: 0px) {
+  & > li {
+    display: inline-block;
+    padding: 0;
+    padding-right: $spacing/2;
+    padding-left: $spacing/2;
+    margin: 0;
+    vertical-align: middle;
+    @content;
+  }
+}
+
+// apply CRT animation: @include scan-crt($scan-crt);
+@mixin scan-crt($scan-crt) {
+  @if $scan-crt==true {
+    animation: scanlines 1s steps($scan-fps) infinite;
+  }
+
+  @else {
+    animation: none;
+  }
+}
+
+// apply CRT animation: @include scan-crt($scan-crt);
+@mixin scan-moving($scan-moving-line) {
+  @if $scan-moving-line==true {
+    animation: scanline 6s linear infinite;
+  }
+
+  @else {
+    animation: none;
+  }
+}

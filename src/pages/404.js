@@ -1,18 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react"
 
-import H2 from '../components/H2';
+import Layout from "../components/base/basic-layout"
+import SEO from "../components/seo/seo"
 
-const Wrapper = styled.div`
-  text-align: center;
-`;
+const NotFoundPage = () => (
+  <Layout>
+    <SEO title="404: Not found" />
+    <h1>NOT FOUND</h1>
+    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  </Layout>
+)
 
-function NotFound() {
-  return (
-    <Wrapper>
-      <H2>Sorry, that page was not found.</H2>
-    </Wrapper>
-  );
-}
-
-export default NotFound;
+export default NotFoundPage
