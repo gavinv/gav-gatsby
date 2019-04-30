@@ -1,7 +1,12 @@
 import React from "react"
 
+<<<<<<< HEAD
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+=======
+import Layout from "../components/base/basic-layout"
+import SEO from "../components/seo/seo"
+>>>>>>> staging
 
 const NotFoundPage = () => (
   <Layout>

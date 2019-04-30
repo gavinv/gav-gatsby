@@ -1,11 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gavin Vaught`,
+    description: ``,
+    author: `@gav`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,25 +15,83 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `components`,
+    //     path: `${__dirname}/src/components/`,
+    //     ignore: [`**/\.*`], // ignore files starting with a dot
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gavin Vaught`,
+        short_name: `gav`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        "icons": [{
+            "src": "favicon/android-chrome-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+        ],
+        background_color: `#fefefe`,
+        theme_color: `#ef333f`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
-      resolve: 'gatsby-source-drupal',
+      resolve: `gatsby-plugin-sass`,
       options: {
-        baseUrl: 'https://d8.gavinvaught.com/',
-        apiBase: 'api', // endpoint of Drupal server
+        file: `src/scss/styles.scss`,
+        outFile: `dist/css/styles.css`
+      },
+    },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `https://d8.gavinvaught.com/`,
+        apiBase: `api`, // endpoint of Drupal server
       },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
