@@ -4,6 +4,7 @@
   "description": "",
   "version": "0.1.0",
   "author": "Gavin Vaught <gavinvaught@gmail.com>",
+  "homepage": "https://gavinvaught.dev",
   "dependencies": {
     "@mdx-js/mdx": "^1.0.15",
     "@mdx-js/react": "^1.0.15",
@@ -21,22 +22,25 @@
     "gatsby-source-drupal": "^3.1.3",
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-sharp": "^2.1.18",
-    "kss": "3.0.0-beta.25",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.19",
-    "typescript": "^3.4.5",
     "typography": "^0.16.19",
     "yarn": "^1.15.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/slug": "^0.9.1",
     "@wdio/cli": "^5.8.0",
+    "cypress": "^3.2.0",
     "prettier": "^1.17.0",
     "selenium-assistant": "^5.4.0",
+    "start-server-and-test": "^1.9.0",
     "wdio-dot-reporter": "0.0.10",
+    "wdio-json-reporter": "^1.0.0",
     "wdio-mocha-framework": "^0.6.4",
     "wdio-webpack-dev-server-service": "^2.0.2",
     "webdriverio": "^4.14.4"
@@ -49,10 +53,13 @@
     "confidence-check": "wdio wdio.conf.js",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "build": "gatsby build"
+    "build": "gatsby build",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:e2e:ci": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run",
+    "wdio:e2e": "echo \"\nNote: due to running a server concurrently with the test, the exit code of this script does not reflect whether tests succeed.\"; concurrently --kill-others \"yarn run start\" \"echo 'Waiting 10 seconds for the server to start...'; sleep 10; yarn run confidence-check\""
   },
   "repository": {
     "type": "git",
