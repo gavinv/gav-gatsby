@@ -1,14 +1,19 @@
-image: node:latest
-before-script:
-    - echo "\e[0;96m > Install npm \e[0m"
-    - npm install
+image: node:8.11
+prepare:
+  stage: prepare
+  script:
+    - wipCommits=`git log --grep=^WIP`; if [ -n "$wipCommits" ]; then echo "WIP commits detected; aborting."; exit 1; fi
+    - npm install --ignore-scripts --frozen-lockfile
+  artifacts:
+    expire_in: 1 month
+    paths:
+    - node_modules/
 
 stages:
   - test
   - build
-  - deploy_staging
-  - confidence-check
   - deploy
+  - confidence-check
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
@@ -38,9 +43,210 @@ e2e:firefox:
   stage: confidence-check
   services:
     - selenium/standalone-firefox
+  dependencies:
+   - prepare
   script:
-    - echo "\e[1;96m➜ Initializing confidence-check. \e[0m"
-    - echo "\e[0;96m Installing geckodriver. \e[0m"
-    - curl -L https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz | tar xz
+    - if [[ $CI_COMMIT_REF_NAME == $BRANCH_IN_MAINTENANCE ]]; then echo 'Running checks in maintenance mode.'; export MAINTENANCE_MODE=true; fi;
     - npm run confidence-check --host=selenium__standalone-firefox
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - __e2e__/results/
+    - __e2e__/errorShots/
+    when: always
+  # GUI tests loading a full browser are notoriously unstable.
+  # See https://gitlab.com/Flockademic/Flockademic/issues/366
+  retry: 2
+e2e:chrome:
+  stage: confidence-check
+  services:
+    - selenium/standalone-chrome
+  dependencies:
+   - prepare
+  script:
+    - if [[ $CI_COMMIT_REF_NAME == $BRANCH_IN_MAINTENANCE ]]; then echo 'Running checks in maintenance mode.'; export MAINTENANCE_MODE=true; fi;
+    - npm run confidence-check --host=selenium__standalone-chrome
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - __e2e__/results/
+    - __e2e__/errorShots/
+    when: always
+  # GUI tests loading a full browser are notoriously unstable.
+  # See https://gitlab.com/Flockademic/Flockademic/issues/366
+  retry: 2
 
+
+image: node:8.10
+
+stages:
+  - prepare
+  - test
+  - build
+  - deploy
+  - confidence-check
+
+prepare:
+  stage: prepare
+  script:
+    - wipCommits=`git log --grep=^WIP`; if [ -n "$wipCommits" ]; then echo "WIP commits detected; aborting."; exit 1; fi
+    - yarn install --ignore-scripts --frozen-lockfile
+  artifacts:
+    expire_in: 1 month
+    paths:
+    - node_modules/
+
+test:
+  stage: test
+  dependencies:
+   - prepare
+  script:
+   - yarn run test
+
+build:
+  stage: build
+  dependencies:
+   - prepare
+  script:
+    - cd stacks/frontend
+    - if [[ $CI_COMMIT_REF_NAME == "master" ]]; then export ORCID_BASE_PATH="$ORCID_BASE_PATH_PRODUCTION"; export ORCID_CLIENT_ID="$ORCID_CLIENT_ID_PRODUCTION"; fi;
+    - export API_URL=`cat ../../api_url`
+    - export CODE_BRANCH="$CI_COMMIT_REF_SLUG"
+    - if [[ $CI_COMMIT_REF_NAME == $BRANCH_IN_MAINTENANCE ]]; then echo 'Building in maintenance mode.'; export MAINTENANCE_MODE=true; fi;
+    - yarn run build
+  artifacts:
+    expire_in: 1 month
+    paths:
+    - stacks/frontend/dist/
+    # The below files are needed for the undeploy jobs,
+    # because when undeploying the branch (and thus these files) is no longer available
+    - stacks/frontend/package.json
+    - stacks/frontend/build/
+
+deploy_frontend:
+  stage: deploy-frontend
+  dependencies:
+   - prepare_frontend
+   - build_frontend
+  script:
+    - cd stacks/frontend
+    - yarn run deploy
+    - yarn run awaitDeployTasks
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://$CI_COMMIT_REF_SLUG.flockademic.com
+    on_stop: stop_frontend
+  except:
+    - master
+deploy_frontend_prod:
+  stage: deploy-frontend
+  dependencies:
+   - prepare_frontend
+   - build_frontend
+  script:
+    - cd stacks/frontend
+    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID_PRODUCTION"
+    - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY_PRODUCTION"
+    - yarn run deploy
+    - yarn run awaitDeployTasks
+  environment:
+    # Since the deploy_terraform environment cannot have different environment names for production and review apps,
+    # we're not doing that here either in order to be able to match on the name and make certain variables only available to production.
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://flockademic.com
+  only:
+    - master
+stop_frontend:
+  stage: deploy-frontend
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+   - prepare_frontend
+   - build_frontend
+  script:
+    - cd stacks/frontend
+    - yarn run undeploy
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    action: stop
+
+e2e:firefox:
+  stage: confidence-check
+  services:
+    - selenium/standalone-firefox
+  dependencies:
+   - prepare
+  script:
+    - if [[ $CI_COMMIT_REF_NAME == $BRANCH_IN_MAINTENANCE ]]; then echo 'Running checks in maintenance mode.'; export MAINTENANCE_MODE=true; fi;
+    - yarn run confidence-check --host=selenium__standalone-firefox
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - __e2e__/results/
+    - __e2e__/errorShots/
+    when: always
+  # GUI tests loading a full browser are notoriously unstable.
+  # See https://gitlab.com/Flockademic/Flockademic/issues/366
+  retry: 2
+e2e:chrome:
+  stage: confidence-check
+  services:
+    - selenium/standalone-chrome
+  dependencies:
+   - prepare
+  script:
+    - if [[ $CI_COMMIT_REF_NAME == $BRANCH_IN_MAINTENANCE ]]; then echo 'Running checks in maintenance mode.'; export MAINTENANCE_MODE=true; fi;
+    - yarn run confidence-check --host=selenium__standalone-chrome
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - __e2e__/results/
+    - __e2e__/errorShots/
+    when: always
+  # GUI tests loading a full browser are notoriously unstable.
+  # See https://gitlab.com/Flockademic/Flockademic/issues/366
+  retry: 2
+# See https://docs.gitlab.com/ce/ci/examples/sast.html
+sast:
+  stage: confidence-check
+  image: registry.gitlab.com/gitlab-org/gl-sast:latest
+  dependencies:
+   - prepare
+   - prepare_frontend
+   - prepare_accounts
+   - prepare_periodicals
+  script:
+    - /app/bin/run .
+  artifacts:
+    paths:
+    - gl-sast-report.json
+# See https://docs.gitlab.com/ee/ci/examples/dast.html
+dast:
+  stage: confidence-check
+  image: owasp/zap2docker-weekly
+  dependencies:
+  script:
+    - mkdir /zap/wrk/
+    - if [[ $CI_COMMIT_REF_NAME == "master" ]]; then export SITE_URL=https://flockademic.com; else export SITE_URL=https://$CI_COMMIT_REF_SLUG.flockademic.com; fi;
+    - /zap/zap-baseline.py -J gl-dast-report.json -t $SITE_URL || true
+    - cp /zap/wrk/gl-dast-report.json .
+  artifacts:
+    paths: [gl-dast-report.json]
+# See https://docs.gitlab.com/ee/ci/examples/browser_performance.html
+performance:
+  stage: confidence-check
+  image: docker:git
+  dependencies:
+  services:
+    - docker:dind
+  script:
+    - mkdir gitlab-exporter
+    - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
+    - mkdir sitespeed-results
+    - if [[ $CI_COMMIT_REF_NAME == "master" ]]; then export SITE_URL=https://flockademic.com; else export SITE_URL=https://$CI_COMMIT_REF_SLUG.flockademic.com; fi;
+    - docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $SITE_URL
+    - mv sitespeed-results/data/performance.json performance.json
+  artifacts:
+    paths:
+    - performance.json
