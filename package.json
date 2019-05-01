@@ -70,8 +70,6 @@
     "url": "https://github.com/ghost-gav/gav-gatsby/issues"
   },
   "husky": {
-    "hooks": {
-
-    }
+    "hooks": {}
   }
 }
