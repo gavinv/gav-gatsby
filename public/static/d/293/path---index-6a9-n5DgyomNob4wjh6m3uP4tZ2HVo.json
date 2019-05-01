@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot query field \"allNodeBasePage\" on type \"Query\". Did you mean \"allSitePage\"?","locations":[{"line":2,"column":3}]}],"pageContext":{"isCreatedByStatefulCreatePages":true}}
