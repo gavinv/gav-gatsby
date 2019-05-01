@@ -32,18 +32,20 @@
     "yarn": "^1.15.2"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.3.2",
-    "@types/slug": "^0.9.1",
-    "@wdio/cli": "^5.8.0",
-    "cypress": "^3.2.0",
-    "prettier": "^1.17.0",
-    "selenium-assistant": "^5.4.0",
-    "start-server-and-test": "^1.9.0",
-    "wdio-dot-reporter": "0.0.10",
-    "wdio-json-reporter": "^1.0.0",
-    "wdio-mocha-framework": "^0.6.4",
-    "wdio-webpack-dev-server-service": "^2.0.2",
-    "webdriverio": "^4.14.4"
+    "@bahmutov/print-env": "1.1.0",
+    "colon-names": "1.0.0",
+    "cypress": "3.2.0",
+    "eslint": "5.16.0",
+    "eslint-plugin-cypress": "2.2.1",
+    "eslint-plugin-cypress-dev": "2.0.0",
+    "eslint-plugin-mocha": "5.3.0",
+    "globby": "9.1.0",
+    "husky": "1.3.1",
+    "semantic-release": "15.13.3",
+    "start-server-and-test": "1.7.12",
+    "stop-build": "1.1.0",
+    "stop-only": "3.0.1",
+    "typescript": "3.4.1"
   },
   "keywords": [
     "gatsby"
@@ -58,8 +60,7 @@
     "build": "gatsby build",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:e2e:ci": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run",
-    "wdio:e2e": "echo \"\nNote: due to running a server concurrently with the test, the exit code of this script does not reflect whether tests succeed.\"; concurrently --kill-others \"yarn run start\" \"echo 'Waiting 10 seconds for the server to start...'; sleep 10; yarn run confidence-check\""
+    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:open"
   },
   "repository": {
     "type": "git",
@@ -67,5 +68,11 @@
   },
   "bugs": {
     "url": "https://github.com/ghost-gav/gav-gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run warn-only",
+      "pre-push": "npm run stop-only"
+    }
   }
 }
