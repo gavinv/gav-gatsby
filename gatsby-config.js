@@ -4,6 +4,7 @@ module.exports = {
     description: ``,
     author: `@gav`,
   },
+  pathPrefix: `/gav-gatsby`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
