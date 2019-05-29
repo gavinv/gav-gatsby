@@ -14,7 +14,7 @@ This project is also currently being used for my own personal education in diffe
 If you'd like to visit the production deployments, follow the respective links below.
 
 - [GatsbyJS deployment](https://gavinvaught.com)
-- [Drupal 8 website](https://d8.gavinvaught.dev)
+- [Drupal 8 website](https://api.gavinvaught.com)
 
 *If you're curious to see the DrupalAPI endpoint, simply append `/api` to the Drupal 8 website's URL.*
 
