@@ -47,7 +47,7 @@
     "confidence-check": "wdio wdio.conf.js",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn run develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
