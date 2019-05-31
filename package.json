@@ -50,8 +50,8 @@
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:open"
+    "cy:run": "cypress run --record --key 2ab8191c-a0c9-440e-9b6d-f3c3e5b30305",
+    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run"
   },
   "repository": "https://github.com/gvaught/gav-gatsby",
   "bugs": {
