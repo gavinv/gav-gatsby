@@ -21,8 +21,8 @@ install:
   stage: build
   script:
     - npm install
-    - npm run cy:verify
-
+    - npm run format
+    - npm run build
 test:
   image: cypress/base:10
   stage: test
