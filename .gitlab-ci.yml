@@ -20,17 +20,18 @@ install:
   image: cypress/base:10
   stage: build
   script:
-    - $(npm bin)/print-env CI
-    - yarn run cy:verify
-
+    - npm install
+    - npm run format
+    - npm run build
 test:
   image: cypress/base:10
   stage: test
   script:
     # print CI environment variables for reference
-    - $(npm bin)/print-env CI
+    # - $(npm bin)/print-env CI
+    - npm install
     # run Cypress test in load balancing mode, pass id to tie jobs together
-    - yarn run e2e
+    - npm run e2e
   artifacts:
     when: always
     paths:
