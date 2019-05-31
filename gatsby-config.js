@@ -4,7 +4,7 @@ module.exports = {
     description: ``,
     author: `@gav`,
   },
-  pathPrefix: `/gav-ghost/gav-gatsby`, /* For gitlab-ci */
+  pathPrefix: `/gvaught/gav-gatsby`, /* For gitlab-ci */
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,

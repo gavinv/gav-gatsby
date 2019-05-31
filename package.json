@@ -1,17 +1,14 @@
 {
   "name": "gav.gatsby",
   "private": true,
-  "description": "",
+  "description": "gatsby deployment for personal portfolio front-end",
   "version": "0.1.0",
   "author": "Gavin Vaught <gavinvaught@gmail.com>",
   "homepage": "https://gavinvaught.dev",
   "dependencies": {
-    "@mdx-js/mdx": "^1.0.15",
-    "@mdx-js/react": "^1.0.15",
-    "babel-eslint": "^10.0.1",
     "gatsby": "^2.3.32",
+    "dotenv": "^8.0.0",
     "gatsby-image": "^2.0.40",
-    "gatsby-mdx": "^0.6.3",
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-netlify": "^2.0.15",
     "gatsby-plugin-offline": "^2.0.25",
@@ -30,40 +27,35 @@
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
+    "webpack": "^4.31.0",
     "yarn": "^1.15.2"
   },
   "devDependencies": {
-    "@bahmutov/print-env": "1.1.0",
+    "@bahmutov/print-env": "^1.1.0",
     "colon-names": "1.0.0",
-    "cypress": "3.2.0",
-    "eslint": "5.16.0",
-    "eslint-plugin-cypress": "2.2.1",
-    "eslint-plugin-cypress-dev": "2.0.0",
-    "eslint-plugin-mocha": "^5.3.0",
+    "cypress": "3.3.1",
     "globby": "9.1.0",
-    "start-server-and-test": "1.7.12",
-    "typescript": "3.4.1"
+    "prettier": "^1.14.2",
+    "start-server-and-test": "^1.7.12",
+    "typescript": "^3.4.1"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "confidence-check": "wdio wdio.conf.js",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn run develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:open"
+    "cy:run": "cypress run --record --key 2ab8191c-a0c9-440e-9b6d-f3c3e5b30305",
+    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ghost-gav/gav-gatsby"
-  },
+  "repository": "https://github.com/gvaught/gav-gatsby",
   "bugs": {
-    "url": "https://github.com/ghost-gav/gav-gatsby/issues"
-  }
+    "url": "https://github.com/gvaught/gav-gatsby/issues"
+  },
+  "main": "index.js"
 }

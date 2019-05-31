@@ -32,5 +32,6 @@
   "viewportHeight": 660,
   "viewportWidth": 1080,
   "waitForAnimations": true,
-  "watchForFileChanges": true
+  "watchForFileChanges": true,
+  "projectId": "aoznh6"
 }
