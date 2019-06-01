@@ -1,9 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
 import { graphql } from "gatsby"
 
-import Layout from "../components/base/basic-layout"
-import SEO from "../components/seo/seo"
+import Layout from "../components/basic/basic-layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
   query allNodeBasePage {
@@ -11,11 +10,8 @@ export const query = graphql`
       edges {
         node {
           id
-          title
           body {
             value
-            format
-            processed
             summary
           }
         }
@@ -46,7 +42,6 @@ const IndexPage = ({ data }) => (
         </div>
       ))}
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 
