@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 345.51 467.6">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #efefef;
+        stroke-linecap: square;
+        stroke-miterlimit: 10;
+        stroke-width: 16px;
+      }
+    </style>
+  </defs>
+  <title>Asset 1</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_3" data-name="Layer 3">
+      <polyline class="cls-1"
+        points="334.74 341.89 173.74 17.89 10.74 341.89" />
+      <polyline class="cls-1"
+        points="334.74 133.89 172.74 449.89 10.74 125.89" />
+      <path class="cls-1"
+        d="M82.74,197.89h216l1,81c-75.65,77.22-155.06,82.45-217,36-36-27-54.09-50.62-63-90-5.58-24.68-4.8-48.26-2.39-75.13A131.44,131.44,0,0,1,55.77,68.15c33.76-33.51,65.13-50.26,117-50.26,51.76-2.1,81,18,117,54" />
+    </g>
+  </g>
+</svg>

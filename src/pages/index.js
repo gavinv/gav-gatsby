@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/basic/basic-layout"
+import Layout from "../components/layout/layout"
+import Spinner from "../components/loading/Spinner"
 import SEO from "../components/seo"
+import "../scss/styles.scss"
 
 export const query = graphql`
   query allNodeBasePage {
@@ -25,13 +27,7 @@ const IndexPage = ({ data }) => (
     <SEO
       title="Gavin Vaught"
       keywords={[
-        `gatsby`,
-        `application`,
-        `react`,
-        "gavin vaught",
-        "developer",
-        "drupal",
-        "decoupled",
+
       ]}
     />
     <div>
@@ -39,6 +35,7 @@ const IndexPage = ({ data }) => (
         <div>
           <h1>{node.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: node.body.value }} />
+          <Spinner></Spinner>
         </div>
       ))}
     </div>

@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 const ListLink = props => (
@@ -14,26 +13,15 @@ const ListLink = props => (
   </li>
 )
 
-
-const MainNav = ({ children, siteTitle }) => (
-  <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
-    <ul style={{ listStyle: `none`, float: `right` }}>
-      <ListLink to="/about/">About</ListLink>
-      <ListLink to="/skills/">Skills</ListLink>
-      <ListLink to="/work/">Work</ListLink>
-      <ListLink to="/blog/">Blog</ListLink>
-      <ListLink to="/contact/">Contact</ListLink>
-    </ul>
+const MainNav = ({ children }) => (
+  <ul style={{ listStyle: `none`, float: `right` }}>
+    <ListLink to="/about/">About</ListLink>
+    <ListLink to="/skills/">Skills</ListLink>
+    <ListLink to="/work/">Work</ListLink>
+    <ListLink to="/blog/">Blog</ListLink>
+    <ListLink to="/contact/">Contact</ListLink>
     {children}
-  </div>
+  </ul>
 )
-
-MainNav.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-MainNav.defaultProps = {
-  siteTitle: ``,
-}
 
 export default MainNav
