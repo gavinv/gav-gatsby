@@ -24,12 +24,7 @@ export const query = graphql`
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO
-      title="Gavin Vaught"
-      keywords={[
-
-      ]}
-    />
+    <SEO title="Gavin Vaught" keywords={[]} />
     <div>
       {data.allNodeBasePage.edges.map(({ node }) => (
         <div>

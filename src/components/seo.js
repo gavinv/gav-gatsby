@@ -50,7 +50,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         {
           property: `og:type`,
           content: `website`,
-        }
+        },
       ]
         .concat(
           keywords.length > 0

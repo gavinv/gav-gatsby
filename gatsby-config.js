@@ -42,13 +42,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/posts`,
-        name: `posts`
-      }
-    },
-    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         "displayName": false
