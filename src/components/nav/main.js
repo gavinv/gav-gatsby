@@ -16,7 +16,7 @@ const ListLink = props => (
 const MainNav = ({ children }) => (
   <ul style={{ listStyle: `none`, float: `right` }}>
     <ListLink to="/about/">About</ListLink>
-    <ListLink to="/skills/">Skills</ListLink>
+    {/*<ListLink to="/skills/">Skills</ListLink>*/}
     <ListLink to="/work/">Work</ListLink>
     <ListLink to="/blog/">Blog</ListLink>
     <ListLink to="/contact/">Contact</ListLink>

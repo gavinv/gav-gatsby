@@ -50,7 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://api.gavinvaught.com/`,
+        baseUrl: `http://api.gavinvaught.com/`,
         apiBase: `api`, // endpoint of Drupal server
       },
     },

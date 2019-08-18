@@ -1,40 +1,51 @@
 import React from "react"
-import { graphql } from "gatsby"
-
 import Layout from "../components/layout/layout"
-import Spinner from "../components/loading/Spinner"
+import styled from 'styled-components'
 import SEO from "../components/seo"
 import "../scss/styles.scss"
 
-export const query = graphql`
-  query allNodeBasePage {
-    allNodeBasePage {
-      edges {
-        node {
-          id
-          body {
-            value
-            summary
-          }
-        }
-      }
-    }
+const IntroText = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 3rem 1rem;
+  height: 72vh;
+  span {
+    font-size: 2.4em;
+    display: block;
+  }
+  &> span.intro-name {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    align-self: center;
+  }
+  span.intro-byline {
+    align-self: flex-end;
   }
 `
+const Index = styled.div`
+  height: 100vh;
+  background-color: var(--primary);
+  overflow: hidden;
+`
 
-const IndexPage = ({ data }) => (
-  <Layout>
+const IndexPage = () => {
+  return (
+    <>
     <SEO title="Gavin Vaught" keywords={[]} />
-    <div>
-      {data.allNodeBasePage.edges.map(({ node }) => (
-        <div>
-          <h1>{node.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: node.body.value }} />
-          <Spinner></Spinner>
-        </div>
-      ))}
-    </div>
-  </Layout>
-)
+    <Index className='index-main'>
+      <Layout>
+        <IntroText className='intro-text'>
+          <span className='intro-first'>Hello, world! </span>
+          <span className='intro-name'>I'm &nbsp;<h1>Gavin Vaught</h1></span>
+          <span className='intro-byline'>Website Designer & Developer</span>
+        </IntroText>
+      </Layout>
+    </Index>
+    </>
+  )
+}
 
 export default IndexPage
