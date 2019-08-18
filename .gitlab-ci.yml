@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - deploy
 # to cache both npm modules and Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
 variables:
@@ -18,14 +19,14 @@ cache:
 # this job installs NPM dependencies and Cypress
 install:
   image: cypress/base:10
-  stage: build
+  stage: deploy
   script:
     - npm install
     - npm run format
     - npm run build
 test:
   image: cypress/base:10
-  stage: test
+  stage: deploy
   script:
     # print CI environment variables for reference
     # - $(npm bin)/print-env CI
