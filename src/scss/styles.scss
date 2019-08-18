@@ -21,21 +21,18 @@
 // Boilerplate Typography and Base HTML elements
 @import "base/**/*.scss";
 
-// Layouts
-// macro arrangement of a web page, including any grid systems.
-@import "layout/**/*.scss";
-
 // Component
-// discrete, reusable UI elements.
 @import "components/**/*.scss";
 
 // State
 // styles that deal with client-side changes to components.
 @import "state/**/*.scss";
 
-// Theme
-// purely visual styling (“look-and-feel”) for a component.
-@import "theme/**/*.scss";
+// Pages
+@import "pages/**/*.scss";
+
+// Templates
+@import "templates/**/*.scss";
 
 // Shame
 // Special cases where a browser, etc needs to be targeted.
