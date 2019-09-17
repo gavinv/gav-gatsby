@@ -6,7 +6,7 @@ import MainNav from "../components/MainNav";
 import Blobs from "./../components/Blobs";
 import Homepage from "./homepage";
 import Footer from "./../components/Footer";
-import SEO from "./../components/seo"
+import SEO from "./../components/SEO"
 
 const IndexPage = () => {
   return (
