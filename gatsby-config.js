@@ -48,13 +48,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-drupal`,
-      options: {
-        baseUrl: `http://api.gavinvaught.com/`,
-        apiBase: `api`, // endpoint of Drupal server
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Gavin Vaught`,
