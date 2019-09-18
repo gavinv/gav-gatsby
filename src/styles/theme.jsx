@@ -1,8 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ThemeProvider, createGlobalStyle, keyframes } from "styled-components";
+import { ThemeProvider, createGlobalStyle, keyframes } from "styled-components"
 
 import "./styles.css";
+
+const float = keyframes`
+  0% {
+  }
+  32% {
+    transform: translate(.8rem, 2.4rem) rotate(8deg);
+  }
+  56% {
+    transform: translate(2.4rem, .8rem) rotate(10deg);
+  }
+  100% {
+    transform: translate(0) rotate(0deg);
+  }
+`
+
+const floatInverse = keyframes`
+  0% {
+  }
+  32% {
+    transform: translate(-2.4rem, -.8rem) rotate(-10deg);
+  }
+  56% {
+    transform: translate(-.8rem, -2.4rem) rotate(-8deg);
+  }
+  100% {
+    transform: translate(0) rotate(0deg);
+  }
+`
 
 export const theme = {};
 
@@ -28,10 +56,9 @@ export const GlobalStyle = createGlobalStyle`
   .main-content {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin: 5rem auto 0 2rem;
-    max-width: 50vw;
+    justify-content: flex-end;
+    margin: 0 auto;
+    overflow-x: hidden;
   }
 
   h1.heading {
@@ -83,7 +110,7 @@ export const GlobalStyle = createGlobalStyle`
   .mainnavigation {
     max-width: 88vw;
     height: 5rem;
-    margin: 2rem auto;
+    margin: 2rem auto 0;
   }
   .footer {
     max-width: 16vw;
@@ -94,19 +121,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1.6rem;
     border-radius: 8px 24px 8px 24px;
   }
-  .blobs-background {
-    position: fixed;
-    top: 2vh;
-    right: -8vw;
-    z-index: -1;
-    transition: all 250ms ease-in-out;
-  }
-  .blobs-background div {
-    animation: float 6s ease-in-out infinite;
-  }
-  .blob-0{background-image: url('/assets/blob-0.svg');}
-  .blob-1{background-image: url('/assets/blob-1.svg');}
-  .blob-2{background-image: url('/assets/blob-2.svg');}
   .homepage-content {
     position: fixed;
     top: 24vh;
@@ -159,19 +173,34 @@ export const GlobalStyle = createGlobalStyle`
   h3 {
     margin: 0 auto;
   }
-`;
+  .blobs-background {
+    width: 48vw;
+    max-height: 100vw;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .blob-0 {
+    animation: ${float} 16s ease-in-out 256ms infinite alternate;
+    svg {
+      transform: rotate(83deg);
+    }
+  }
+  .blob-1 {
+    animation: ${floatInverse} 24s ease-in-out infinite alternate;
+    svg {
+      transform: rotate(179deg) translate(-8vw, 16vh);
+    }
+  }
+  .blob-2 {
+    animation: ${float} 15.6s ease-in-out 512ms infinite alternate;
+    svg {
+    transform: rotate(80deg) translate(-16em, -32rem);
+    }
+  }
 
-export const float = keyframes`
-  0% {
-    transform: translate(-737.179 -19.288);
-  }
-  66% {
-    transform: translatey(32%);
-    transform: translatex(24%);
-  }
-  100% {
-    transform: translate(-737.179 -19.288);
-  }
+
 `;
 
 export default function Theme(props) {
