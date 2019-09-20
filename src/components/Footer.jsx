@@ -5,7 +5,7 @@ import SocialLinks from "../assets/SocialLinks";
 const Footer = props => {
   return (
     <>
-      <footer className="footer blurredbar">
+      <footer className="footer blurred">
         <SocialLinks />
       </footer>
     </>

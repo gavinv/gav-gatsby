@@ -58,7 +58,6 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: row;
     justify-content: flex-end;
     margin: 0 auto;
-    overflow-x: hidden;
   }
 
   h1.heading {
@@ -99,13 +98,17 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Roboto;
     font-weight: 300;
   }
-  .blurredbar {
+  .blurred {
     display: flex;
-    backdrop-filter: blur(16px) brightness(80%) opacity(8);
     background-color: #63636333;
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     padding: 2rem;
+  }
+  @supports (backdrop-filter: blur(16px) brightness(80%) opacity(8)) {
+    .blurred {
+      backdrop-filter: blur(16px) brightness(80%) opacity(8);
+    }
   }
   .mainnavigation {
     max-width: 88vw;
@@ -145,14 +148,14 @@ export const GlobalStyle = createGlobalStyle`
     display: inlineFlex;
     align-self: center;
     cursor: pointer;
-  }
-  .gav-expanded {
-    fill: rgba(0,0,0,0);
-    stroke: var(--coral);
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-width: 3px;
+    path {
+      fill: rgba(0,0,0,0);
+      stroke: var(--coral);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 3px;
+    }
   }
   .pages {
     display: inline-flex;
@@ -175,26 +178,30 @@ export const GlobalStyle = createGlobalStyle`
   }
   .blobs-background {
     width: 48vw;
-    max-height: 100vw;
+    max-height: 100vh;
     z-index: -1;
     position: absolute;
     top: 0;
     right: 0;
+    overflow: hidden;
   }
   .blob-0 {
-    animation: ${float} 16s ease-in-out 256ms infinite alternate;
+    will-change: transform;
+    animation: ${float} 16s ease-in-out 256ms infinite;
     svg {
       transform: rotate(83deg);
     }
   }
   .blob-1 {
-    animation: ${floatInverse} 24s ease-in-out infinite alternate;
+    will-change: transform;
+    animation: ${floatInverse} 24s ease-in-out infinite;
     svg {
       transform: rotate(179deg) translate(-8vw, 16vh);
     }
   }
   .blob-2 {
-    animation: ${float} 15.6s ease-in-out 512ms infinite alternate;
+    will-change: transform;
+    animation: ${float} 15.6s ease-in-out 512ms infinite;
     svg {
     transform: rotate(80deg) translate(-16em, -32rem);
     }

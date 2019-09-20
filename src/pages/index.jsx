@@ -7,6 +7,7 @@ import Blobs from "./../components/Blobs";
 import Homepage from "./homepage";
 import Footer from "./../components/Footer";
 import SEO from "./../components/SEO"
+import './../js/css-animations-helpers.js'
 
 const IndexPage = () => {
   return (
