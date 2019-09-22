@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+// Variables
+// Set variables for this site.
+@import "settings";
+
+// Mixins
+// Custom mixins used on this site.
+@import "utilities/mixins";
+
+// Functions
+// Custom functions used on this site.
+@import "utilities/functions";
+
+// Normalize
+@import "utilities/normalize";
+
+/*---------------------------------------------------*/
+
+// Base
+// Boilerplate Typography and Base HTML elements
+@import "base/**/*.scss";
+
+// Component
+@import "components/**/*.scss";
+
+// State
+// styles that deal with client-side changes to components.
+@import "state/**/*.scss";
+
+// Pages
+@import "pages/**/*.scss";
+
+// Templates
+@import "templates/**/*.scss";
+
+// Shame
+// Special cases where a browser, etc needs to be targeted.
+// Also used for developer based files during local development only.
+@import "shame/**/*.scss";
