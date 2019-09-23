@@ -14,27 +14,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        importer: function (url, parent, done) {
-          var base = path.join(path.dirname(parent), url);
-          if (glob.hasMagic(base)) {
-            glob(base, { nodir: true }, function (err, files) {
-              var contents = files.map(function (cur) {
-                return fs.readFileSync(cur, 'utf8');
-              });
-              done({ contents: contents.join('\n') });
-            });
-          } else {
-            done({ file: url });
-          }
-        },
-        cssLoaderOptions: {
-          camelCase: false,
-        },
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
