@@ -5,12 +5,14 @@ var glob = require('glob');
 module.exports = {
   siteMetadata: {
     title: `Gavin Vaught | Web Developer & Designer`,
+    titleTemplate: `%s | Gavin Vaught`,
     description: `Personal portfolio PWA with blog and modern UI.`,
-    author: `@_gvaught`,
+    url: `https://gavinvaught.com`,
+    image: `/assets/favicon.ico`,
+    twitterUsername: `@_gvaught`,
   },
   pathPrefix: `/gvaught/gav-gatsby`, /* For gitlab-ci */
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -44,6 +46,7 @@ module.exports = {
         display: `minimal-ui`,
       },
     },
+    `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
