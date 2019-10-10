@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle, keyframes } from "styled-components"
+import 'typeface-lato'
 
 import "./styles.css"
 
@@ -54,24 +55,27 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
   .main-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    grid-template-rows: 1fr;
+    align-items: center;
     margin: 0 auto;
   }
 
   h1.heading {
-    font-family: Lato Black;
+    font-family: Lato-Black, Lato, sans-serif;
+    font-weight: 900;
     font-size: 4.5rem;
     letter-spacing: -3.2px;
   }
   .sub-heading {
-    font-family: Lato;
+    font-family: Lato, san-serif;
     font-weight: 500;
     font-size: 2rem;
     letter-spacing: 0.2rem;
     display: grid;
-    grid-template: '. .' 1.4fr '. .' 3fr / 3fr 0.8fr;
+    grid-template: '. .' 1fr '. .' 3fr / 4fr 1fr;
     align-items: center;
     align-self: safe;
     justify-items: end;
@@ -104,35 +108,74 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     padding: 2rem;
+    backdrop-filter: blur(4px) brightness(80%) contrast(104%);
   }
-  @supports (backdrop-filter: blur(16px) brightness(80%) opacity(8)) {
-    .blurred {
-      backdrop-filter: blur(16px) brightness(80%) opacity(8);
+  .menu-item {
+    color: var(--coral);
+    text-decoration: none;
+    transition: all 256ms ease-in-out;
+    :hover {
+      filter: drop-shadow(0 0 .24px);
+      text-decoration: underline dotted;
     }
   }
   .mainnavigation {
     max-width: 88vw;
     height: 5rem;
     margin: 2rem auto 0;
+    @media screen and (max-width: 640px) {
+      max-width: 16vw;
+      height: 16vw;
+      margin: 2rem auto 0;
+      position: fixed;
+      bottom: 4vh;
+      right: 4vw;
+      .gav-expanded-container,
+      .pages {
+        visibility: hidden;
+      }
+    }
   }
   .footer {
-    max-width: 16vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    align-items: center;
+    justify-items: center;
     height: 4rem;
     position: fixed;
-    bottom: 2rem;
-    right: 5rem;
-    padding: 1.6rem;
+    bottom: 4vh;
+    padding: 1.4rem;
     border-radius: 8px 24px 8px 24px;
+    > .menu-item:hover {
+      border-bottom: 1px dotted #fac9ce;
+    }
+    @media screen and (min-width: 640px) {
+      right: 4vw;
+    }
+    @media screen and (max-width: 640px) {
+      left: 4vw;
+    }
   }
   .homepage-content {
-    position: fixed;
-    top: 24vh;
-    left: 16vw;
+    max-height: 32vw;
+    max-width: 48vw;
+    position: relative;
+    margin: 1rem auto;
   }
   .gavlogo {
-    position: fixed;
-    top: 24vh;
-    right: 16vw;
+    max-height: 40vw;
+    max-width: 48vw;
+    position: relative;
+    margin: 1rem auto;
+    @media screen and (max-width: 640px) {
+      position: fixed;
+      bottom: 5.5vh;
+      right: 6.5vw;
+      height: 7.2vh;
+      width: 7.2vh;
+      margin: 0 auto;
+    }
   }
   .gavlogo-path {
     fill: rgba(0,0,0,0);
@@ -206,8 +249,6 @@ export const GlobalStyle = createGlobalStyle`
     transform: rotate(80deg) translate(-16em, -32rem);
     }
   }
-
-
 `
 
 export default function Theme(props) {
