@@ -104,10 +104,19 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     padding: 2rem;
+    backdrop-filter: blur(4px) brightness(80%) opacity(80%);
   }
-  @supports (backdrop-filter: blur(16px) brightness(80%) opacity(8)) {
-    .blurred {
-      backdrop-filter: blur(16px) brightness(80%) opacity(8);
+  @supports not (backdrop-filter) {
+    .bg-mask {
+
+    }
+    .bg-content-clone {
+      position:absolute;
+      left: 0px;
+      top: 0px;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      filter: blur(4px);
     }
   }
   .mainnavigation {
@@ -206,8 +215,6 @@ export const GlobalStyle = createGlobalStyle`
     transform: rotate(80deg) translate(-16em, -32rem);
     }
   }
-
-
 `
 
 export default function Theme(props) {
