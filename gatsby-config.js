@@ -4,9 +4,9 @@ var glob = require('glob');
 
 module.exports = {
   siteMetadata: {
-    title: `Gavin Vaught`,
-    description: ``,
-    author: `@gav`,
+    title: `Gavin Vaught | Web Developer & Designer`,
+    description: `Personal portfolio PWA with blog and modern UI.`,
+    author: `@_gvaught`,
   },
   pathPrefix: `/gvaught/gav-gatsby`, /* For gitlab-ci */
   plugins: [
@@ -29,7 +29,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gavin Vaught`,
+        name: `Gavin Vaught | Web Developer & Designer`,
         short_name: `gav`,
         start_url: `/`,
         "icons": [
@@ -40,7 +40,7 @@ module.exports = {
           }
         ],
         background_color: `#121212`,
-        theme_color: `#ef333f`,
+        theme_color: `#fac9ce`,
         display: `minimal-ui`,
       },
     },

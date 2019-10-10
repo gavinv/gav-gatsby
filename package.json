@@ -34,6 +34,9 @@
     "react-typography": "^0.16.19",
     "styled-components": "^4.4.0",
     "styled-props": "^1.1.2",
+    "typeface-lato": "0.0.75",
+    "typeface-open-sans": "0.0.75",
+    "typeface-roboto": "0.0.75",
     "typography": "^0.16.19",
     "webpack": "^4.41.0"
   },
