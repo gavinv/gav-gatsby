@@ -106,12 +106,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 2rem;
     backdrop-filter: blur(4px) brightness(80%) opacity(80%);
   }
-  @supports not (backdrop-filter) {
+  @supports not(backdrop-filter) {
     .bg-mask {
 
     }
     .bg-content-clone {
-      position:absolute;
+      position: absolute;
       left: 0px;
       top: 0px;
       background-repeat: no-repeat;

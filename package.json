@@ -1,10 +1,10 @@
 {
-  "name": "gav.gatsby",
+  "name": "gav-gatsby",
   "private": true,
   "description": "gatsby deployment for personal portfolio front-end",
-  "version": "0.1.0",
+  "version": "0.2.3",
   "author": "Gavin Vaught <gavinvaught@gmail.com>",
-  "homepage": "https://gavinvaught.dev",
+  "homepage": "https://gavinvaught.com",
   "dependencies": {
     "@reach/router": "^1.2.1",
     "babel-plugin-styled-components": "^1.10.6",
@@ -13,7 +13,7 @@
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-netlify": "^2.1.17",
-    "gatsby-plugin-offline": "^2.2.10",
+    "gatsby-plugin-offline": "^3.0.13",
     "gatsby-plugin-react-helmet": "^3.1.10",
     "gatsby-plugin-sharp": "^2.2.27",
     "gatsby-plugin-sitemap": "^2.2.16",
@@ -41,17 +41,13 @@
     "react-hot-loader": "^4.12.14",
     "start-server-and-test": "^1.10.3",
     "style-loader": "^1.0.0",
-    "svg-inline-loader": "^0.8.0",
-    "typescript": "^3.6.3"
+    "svg-inline-loader": "^0.8.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn run develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
