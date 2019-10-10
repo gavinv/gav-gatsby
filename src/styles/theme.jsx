@@ -107,17 +107,7 @@ export const GlobalStyle = createGlobalStyle`
     backdrop-filter: blur(4px) brightness(80%) opacity(80%);
   }
   @supports not(backdrop-filter) {
-    .bg-mask {
 
-    }
-    .bg-content-clone {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      filter: blur(4px);
-    }
   }
   .mainnavigation {
     max-width: 88vw;
@@ -139,8 +129,8 @@ export const GlobalStyle = createGlobalStyle`
     left: 16vw;
   }
   .gavlogo {
-    position: fixed;
-    top: 24vh;
+    position: relative;
+    height: 40vw;
     right: 16vw;
   }
   .gavlogo-path {

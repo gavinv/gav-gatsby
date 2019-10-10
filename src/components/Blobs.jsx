@@ -19,26 +19,3 @@ const Blobs = () => {
 };
 
 export default Blobs;
-
-// const Blob = posed.svg({
-
-// });
-
-// const Blobs = ({ blobs }) => {
-//   <PoseGroup>
-//     {blobs.map((blob) => <Blob key={blob.id} />)}
-//   </PoseGroup>
-// }
-
-// class Blobs extends React.PureComponent {
-//   render() {
-//     return (
-//       <Blobs className="blobs-background">
-//         <Blob className="blob" />
-//         <Blob className="blob" />
-//         <Blob className="blob" />
-//         <Blob className="blob" />
-//       </Blobs>
-//     );
-//   }
-// }

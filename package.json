@@ -6,6 +6,12 @@
   "author": "Gavin Vaught <gavinvaught@gmail.com>",
   "homepage": "https://gavinvaught.com",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.6",
+    "@hot-loader/react-dom": "^16.10.2",
     "@reach/router": "^1.2.1",
     "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.1.0",
