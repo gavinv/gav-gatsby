@@ -13,6 +13,9 @@ export default function Layout(props) {
       <Theme />
       <Blobs />
       <MainNav />
+      <main className="main-content">
+        { props.children }
+      </main>
       <Footer />
     </>
   );
