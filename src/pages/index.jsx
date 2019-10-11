@@ -4,10 +4,12 @@ import ErrorBoundary from "./../components/ErrorBoundary"
 import Layout from "../components/Layout"
 import Button from '../components/Button'
 import Link from '../components/Link'
+import SEO from '../components/SEO'
 
 const IndexPage = () => {
   return (
     <>
+    <SEO title='Gavin Vaught' />
     <ErrorBoundary>
       <Layout>
       <div className="homepage-content">
