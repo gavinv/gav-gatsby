@@ -5,7 +5,7 @@ var glob = require('glob')
 module.exports = {
   siteMetadata: {
     title: `Gavin Vaught | Web Developer & Designer`,
-    titleTemplate: `%s | Gavin Vaught`,
+    titleTemplate: ``,
     description: `Personal portfolio PWA with blog and modern UI.`,
     siteUrl: `https://gavinvaught.com`,
     image: `/assets/favicon.ico`,
@@ -35,11 +35,7 @@ module.exports = {
         name: `Gavin Vaught | Web Developer & Designer`,
         short_name: `gav`,
         start_url: `/`,
-        icons: [{
-          src: 'favicon.ico',
-          sizes: '64x64 32x32 24x24 16x16',
-          type: 'image/x-icon',
-        }],
+        icon: 'src/assets/favicon512.png',
         background_color: `#121212`,
         theme_color: `#fac9ce`,
         display: `minimal-ui`,
