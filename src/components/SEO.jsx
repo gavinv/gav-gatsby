@@ -5,8 +5,8 @@ import { StaticQuery, graphql } from "gatsby"
 
 const SEO = ({ title, description, image, pathname, article }) => (
   <StaticQuery
-    query={query}
-    render={({
+    query = { query }
+    render = {({
       site: {
         siteMetadata: {
           defaultTitle,
@@ -18,8 +18,13 @@ const SEO = ({ title, description, image, pathname, article }) => (
         },
       },
     }) => {
+      const temp = (title === `Gavin Vaught`)
+        ? `Web Developer & Designer`
+        : `Gavin Vaught`
+
       const seo = {
         title: title || defaultTitle,
+        titleTemplate: `${title} | ${temp}` || `Gavin Vaught | Web Developer & Designer`,
         description: description || defaultDescription,
         image: `${siteUrl}${image || defaultImage}`,
         siteUrl: `${siteUrl}${pathname || "/"}`,
@@ -27,8 +32,9 @@ const SEO = ({ title, description, image, pathname, article }) => (
       return (
         <>
           <Helmet
-            title={seo.title}
-            titleTemplate={`%s | Gavin Vaught`}>
+            title = { seo.title }
+            titleTemplate = { seo.titleTemplate }
+          >
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
             {seo.siteUrl && <meta property="og:url" content={seo.siteUrl} />}
@@ -56,6 +62,7 @@ const SEO = ({ title, description, image, pathname, article }) => (
   />
 )
 export default SEO
+
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
@@ -63,6 +70,7 @@ SEO.propTypes = {
   pathname: PropTypes.string,
   article: PropTypes.bool,
 }
+
 SEO.defaultProps = {
   title: null,
   description: null,
@@ -70,6 +78,7 @@ SEO.defaultProps = {
   pathname: null,
   article: false,
 }
+
 const query = graphql`
   query SEO {
     site {
