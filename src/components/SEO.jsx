@@ -22,7 +22,7 @@ const SEO = ({ title, description, image, pathname, article }) => (
         title: title || defaultTitle,
         description: description || defaultDescription,
         image: `${siteUrl}${image || defaultImage}`,
-        url: `${siteUrl}${pathname || "/"}`,
+        siteUrl: `${siteUrl}${pathname || "/"}`,
       }
       return (
         <>
@@ -31,7 +31,7 @@ const SEO = ({ title, description, image, pathname, article }) => (
             titleTemplate={`%s | Gavin Vaught`}>
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
-            {seo.url && <meta property="og:url" content={seo.url} />}
+            {seo.siteUrl && <meta property="og:url" content={seo.siteUrl} />}
             {(article ? true : null) && (
               <meta property="og:type" content="article" />
             )}
@@ -77,7 +77,7 @@ const query = graphql`
         defaultTitle: title
         titleTemplate: titleTemplate
         defaultDescription: description
-        siteUrl: url
+        siteUrl: siteUrl
         defaultImage: image
         twitterUsername
       }

@@ -7,13 +7,14 @@ module.exports = {
     title: `Gavin Vaught | Web Developer & Designer`,
     titleTemplate: `%s | Gavin Vaught`,
     description: `Personal portfolio PWA with blog and modern UI.`,
-    url: `https://gavinvaught.com`,
+    siteUrl: `https://gavinvaught.com`,
     image: `/assets/favicon.ico`,
     twitterUsername: `@_gvaught`,
   },
   pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */ ,
   plugins: [
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -38,14 +39,25 @@ module.exports = {
           src: 'favicon.ico',
           sizes: '64x64 32x32 24x24 16x16',
           type: 'image/x-icon',
-        }, ],
+        }],
         background_color: `#121212`,
         theme_color: `#fac9ce`,
         display: `minimal-ui`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-139960866-1"
+      }
+    },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-feed`,
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    //   options: {
+
+    //   }
+    // },
     `gatsby-plugin-offline`,
   ],
 }
