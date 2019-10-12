@@ -1,27 +1,21 @@
 # ghost-gav/gav-gatsby
 
-[![Pipeline Status](https://gitlab.com/ghost-gav/gav-gatsby/badges/staging/pipeline.svg?style=flat-square)](https://gitlab.com/gvaught/gav-gatsby/commits/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ed89a3c6-3514-4ec1-a746-ae1395701c65/deploy-status)](https://app.netlify.com/sites/ghost-gatsby-d8/deploys)
+[![Pipeline Status](https://gitlab.com/ghost-gav/gav-gatsby/badges/production/pipeline.svg?style=flat-square)](https://gitlab.com/gvaught/gav-gatsby/commits/)
 
 ---
 
-A GatsbyJS (ReactJS) project built to be a personal portfolio/dev blog using Drupal 8's JSONAPI for some GraphQL and RESTful servives.
+The live webapp can be viewed at the link below:
+https://gavinvaught.com
 
-This project is also currently being used for my own personal education in different development processes and technologies (eg. CI/CD tools, component-based architecture, ES6, etc.). As such, it is constantly changing which correlates to some instability.
+## What
 
-## Production Environments
+This project consists a living website built primarily in [React](https://reactjs.org) with [Gatsby.js](https://gatsby.org) as a framework to provide caching, SEO, and other various optimizations out-of-the box.  This also allows easy deployment to [Netlify's](https://netlify.com) CDN as the builds are triggered from Production branch commit hooks and hosting is free for "static" webpages and webapps.
 
-If you'd like to visit the production deployments, follow the respective links below.
+Along with the React components and Gatsby.js configuration, the project includes basic [Gitlab CI](https://gitlab.com/ci) and Cypress automated testing integration.
 
-- [GatsbyJS deployment](https://gavinvaught.com)
-- [Drupal 8 website](https://api.gavinvaught.com)
+The result is a robust webapp that is PWA-capable.
 
-*If you're curious to see the DrupalAPI endpoint, simply append `/api` to the Drupal 8 website's URL.*
+## Why
 
----
-
-## ¡AVISO!
-
-**You probably shouldn't use this repo as a template or basis for any other projects.**
-
-I do plan to publish a basic distro for a scalable component-based DrupalAPI/Gatsby project once I hit a *stable* milestone that I'm happy with.
+The main end-goal for the development of this particular integration is to be used as a personal portfolio and blog (and of course, the necessary functional contact form).  The blog will have RSS feed capabilities and the portfolio will serve examples or links to any relevant past projects.
