@@ -38,22 +38,22 @@ const Wrapper = styled.div`
   right: 0;
   overflow: hidden;
   .blob-0 {
-    will-change: transform;
-    animation: ${float} 16s ease-in-out 256ms 3;
+    /* will-change: transform;
+    animation: ${float} 16s ease-in-out 256ms 3; */
     svg {
       transform: rotate(83deg);
     }
   }
   .blob-1 {
-    will-change: transform;
-    animation: ${floatInverse} 24s ease-in-out 3;
+    /* will-change: transform;
+    animation: ${floatInverse} 24s ease-in-out 3; */
     svg {
       transform: rotate(179deg) translate(-8vw, 16vh);
     }
   }
   .blob-2 {
-    will-change: transform;
-    animation: ${float} 15.6s ease-in-out 512ms 3;
+    /* will-change: transform;
+    animation: ${float} 15.6s ease-in-out 512ms 3; */
     svg {
     transform: rotate(80deg) translate(-16em, -32rem);
     }
