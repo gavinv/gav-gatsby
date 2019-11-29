@@ -18,14 +18,12 @@ cache:
 
 install:
   image: cypress/base:10
-  stage: deploy
+  stage: build
   script:
     - npm install
-    - npm run format
-    - npm run build
 test:
   image: cypress/base:10
-  stage: deploy
+  stage: test
   script:
     # print CI environment variables for reference
     # - $(npm bin)/print-env CI
@@ -38,3 +36,10 @@ test:
       - cypress/videos/**/*.mp4
       - cypress/screenshots/**/*.png
     expire_in: 1 day
+deploy:
+  image: cypress/base:10
+  stage: deploy
+  script:
+    - npm run install
+    - npm run format
+    - npm run
