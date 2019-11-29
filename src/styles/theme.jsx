@@ -110,7 +110,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 2rem;
     backdrop-filter: blur(4px) brightness(80%) contrast(104%);
   }
-  .menu-item {
+  .menu-item,
+  a {
     color: var(--coral);
     text-decoration: none;
     transition: all 256ms ease-in-out;

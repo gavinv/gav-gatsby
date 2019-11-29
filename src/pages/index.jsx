@@ -5,6 +5,48 @@ import Layout from "../components/Layout"
 import Button from '../components/Button'
 import Link from '../components/Link'
 import SEO from '../components/SEO'
+import useWindowSize from '../hooks/useWindowSize'
+
+const Buttons = () => {
+  const viewport = useWindowSize().width
+  if (viewport <= 640) {
+    return (
+      <>
+      <Link to='contact'>
+        <Button 
+          bg='var(--coral)'
+          fg='var(--beige)'
+          fx='none'
+          rad='24px 8px 24px 24px'
+          label='Contact me'
+        />
+      </Link>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <Link to="about">
+          <Button bg="var(--violet)" fg="var(--coral)" fx="none" label="About"/>
+        </Link>
+        <Link to="portfolio">
+          <Button bg="var(--magenta)" fg="var(--coral)" fx="none" 
+            rad="24px 8px 24px 24px" label="Portfolio"
+          />
+        </Link>
+        <Link to="blog">
+          <Button bg="var(--orange)" fg="var(--coral)" fx="none" rad="24px 24px 24px 8px" label="Blog"
+          />
+        </Link>
+        <Link to="contact">
+          <Button fg="var(--beige)" bg="var(--yellow)" fx="none" 
+            rad="24px 24px 8px 24px" label="Contact"
+          />
+        </Link>
+      </>
+    )
+  }
+}
 
 const IndexPage = () => {
   return (
@@ -19,41 +61,7 @@ const IndexPage = () => {
           <span className="corner-ampersand">&</span>
           <span className="sideways">designer</span>
           <div className="homepage-navigation">
-            <Link to="about">
-              <Button
-                bg="var(--violet)"
-                fg="var(--coral)"
-                fx="none"
-                label="About"
-              />
-            </Link>
-            <Link to="portfolio">
-              <Button
-                bg="var(--magenta)"
-                fg="var(--coral)"
-                fx="none"
-                rad="24px 8px 24px 24px"
-                label="Portfolio"
-              />
-            </Link>
-            <Link to="blog">
-              <Button
-                bg="var(--orange)"
-                fg="var(--coral)"
-                fx="none"
-                rad="24px 24px 24px 8px"
-                label="Blog"
-              />
-            </Link>
-            <Link to="contact">
-              <Button
-                fg="var(--beige)"
-                bg="var(--yellow)"
-                fx="none"
-                rad="24px 24px 8px 24px"
-                label="Contact"
-              />
-            </Link>
+            { Buttons(useWindowSize) }
           </div>
         </div>
       </div>
