@@ -4,7 +4,6 @@ import Theme from "./../styles/theme"
 import MainNav from "./MainNav"
 import Blobs from "./Blobs"
 import Footer from "./Footer"
-import useWindowSize from './../hooks/useWindowSize'
 
 export default function Layout(props) {
   return (

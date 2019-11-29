@@ -1,37 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider, createGlobalStyle, keyframes } from "styled-components"
+import { ThemeProvider, createGlobalStyle } from "styled-components"
 import 'typeface-lato'
 
 import "./styles.css"
-
-const float = keyframes`
-  0% {
-  }
-  32% {
-    transform: translate(.8rem, 2.4rem) rotate(8deg);
-  }
-  56% {
-    transform: translate(2.4rem, .8rem) rotate(10deg);
-  }
-  100% {
-    transform: translate(0) rotate(0deg);
-  }
-`
-
-const floatInverse = keyframes`
-  0% {
-  }
-  32% {
-    transform: translate(-2.4rem, -.8rem) rotate(-10deg);
-  }
-  56% {
-    transform: translate(-.8rem, -2.4rem) rotate(-8deg);
-  }
-  100% {
-    transform: translate(0) rotate(0deg);
-  }
-`
 
 export const theme = {}
 
@@ -108,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     padding: 2rem;
-    backdrop-filter: blur(4px) brightness(80%) contrast(104%);
+    backdrop-filter: blur(8px) brightness(80%);
   }
   .menu-item,
   a {
@@ -219,36 +191,6 @@ export const GlobalStyle = createGlobalStyle`
   h2,
   h3 {
     margin: 0 auto;
-  }
-  .blobs-background {
-    width: 48vw;
-    max-height: 100vh;
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    overflow: hidden;
-  }
-  .blob-0 {
-    will-change: transform;
-    animation: ${float} 16s ease-in-out 256ms 3;
-    svg {
-      transform: rotate(83deg);
-    }
-  }
-  .blob-1 {
-    will-change: transform;
-    animation: ${floatInverse} 24s ease-in-out 3;
-    svg {
-      transform: rotate(179deg) translate(-8vw, 16vh);
-    }
-  }
-  .blob-2 {
-    will-change: transform;
-    animation: ${float} 15.6s ease-in-out 512ms 3;
-    svg {
-    transform: rotate(80deg) translate(-16em, -32rem);
-    }
   }
 `
 
