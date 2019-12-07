@@ -11,21 +11,20 @@ variables:
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
+  key: $CI_COMMIT_REF_SLUG
   paths:
     - node_modules
     - cache/Cypress
 
 install:
   image: cypress/base:10
-  stage: deploy
+  stage: build
   script:
     - npm install
-    - npm run format
-    - npm run build
+
 test:
   image: cypress/base:10
-  stage: deploy
+  stage: test
   script:
     # print CI environment variables for reference
     # - $(npm bin)/print-env CI
@@ -38,3 +37,25 @@ test:
       - cypress/videos/**/*.mp4
       - cypress/screenshots/**/*.png
     expire_in: 1 day
+
+deploy_staging:
+  stage: deploy
+  image: cypress/base:10
+  script:
+    - npm run build
+  environment:
+    name: stage/$CI_COMMIT_REF_NAME
+    url: https://stage.gavinvaught.com
+  only:
+    - staging
+
+deploy_prod:
+  stage: deploy
+  image: cypress/base:10
+  script:
+    - npm run build
+  environment:
+    name: prod/$CI_COMMIT_REF_NAME
+    url: https://gavinvaught.com
+  only:
+    - production
