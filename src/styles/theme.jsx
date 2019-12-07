@@ -27,12 +27,26 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
   .main-content {
+    max-width: 88vw;
+    margin: 0 auto;
+  }
+  .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     grid-template-rows: 1fr;
     align-items: center;
-    margin: 0 auto;
+    &.col-1 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &.col-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  section.main {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    justify-items: start;
   }
 
   h1.heading {
@@ -191,6 +205,9 @@ export const GlobalStyle = createGlobalStyle`
   h2,
   h3 {
     margin: 0 auto;
+  }
+  p {
+    margin-bottom: 1rem;
   }
 `
 
