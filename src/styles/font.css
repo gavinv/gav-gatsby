@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Recursive';
+  src: url('../fonts/rec-mono_casl_wght_slnt_ital--2019_11_30.woff2') format('woff2-variations');
+  font-weight: 300 900;
+}
+:root {
+  --mono: "MONO" 0;
+  --casl: "CASL" .32;
+  --wght: "wght" 256;
+  --slnt: "slnt" 0;
+  --ital: "ital" 0.5;
+  font-variation-settings: var(--mono), var(--casl), var(--wght), var(--slnt), var(--ital); 
+}

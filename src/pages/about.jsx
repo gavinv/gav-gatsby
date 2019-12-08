@@ -38,7 +38,7 @@ export default function About() {
       <SEO title='About' />
       <ErrorBoundary>
         <Layout>
-          <section className='main blurred' style={{margin: '1em auto'}}>
+          <section className='main blurred'>
             <h1 className='section-heading'>About</h1>
             <p>View/Download my current resume:</p>
             <Wrapper>

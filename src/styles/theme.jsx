@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import 'typeface-lato'
 
+import './font.css'
 import "./styles.css"
 
 export const theme = {}
@@ -15,9 +16,9 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: var(--font-family-sans-serif);
   }
   * {
+    font-family: 'Recursive', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -47,17 +48,17 @@ export const GlobalStyle = createGlobalStyle`
     grid-gap: 1rem;
     grid-template-columns: 1fr;
     justify-items: start;
+    margin: 1rem auto;
+    padding-top: 1rem;
   }
 
   h1.heading {
-    font-family: Lato-Black, Lato, sans-serif;
+    font-family: 'Lato Black', sans-serif;
     font-weight: 900;
     font-size: 4.5rem;
     letter-spacing: -3.2px;
   }
   .sub-heading {
-    font-family: Lato, san-serif;
-    font-weight: 500;
     font-size: 2rem;
     letter-spacing: 0.2rem;
     display: grid;
@@ -66,19 +67,34 @@ export const GlobalStyle = createGlobalStyle`
     align-self: safe;
     justify-items: end;
     margin-left: 3rem;
+    font-variation-settings: 
+      "MONO" 1,
+      "CASL" 0,
+      "slnt" 0,
+      "ital" 0;
   }
   .sideways {
     writing-mode: vertical-rl;
     text-orientation: sideways-right;
     grid-area: 2 / 2;
     justify-self: center;
+    font-weight: 564;
+    font-variation-settings:
+      "MONO" 0,
+      "CASL" 1,
+      "slnt" -8,
+      "ital" 1;
   }
   .corner-ampersand {
     justify-self: center;
     align-self: center;
-    font-weight: 400;
+    font-weight: 564;
     color: var(--magenta);
-    padding: 1.8rem 0 0 0;
+    font-variation-settings:
+      "MONO" 0,
+      "CASL" .64,
+      "slnt" -15,
+      "ital" 1;
   }
   .homepage-navigation {
     display: grid;
@@ -100,11 +116,6 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: var(--coral);
     text-decoration: none;
-    transition: all 256ms ease-in-out;
-    :hover {
-      filter: drop-shadow(0 0 .24px);
-      text-decoration: underline dotted;
-    }
   }
   .mainnavigation {
     max-width: 88vw;
@@ -191,10 +202,10 @@ export const GlobalStyle = createGlobalStyle`
     display: inline-flex;
     align-self: center;
     font-family: Roboto;
-		font-style: normal;
-		font-weight: 300;
-		font-size: .8rem;
-		color: var(--coral);
+    font-style: normal;
+    font-weight: 300;
+    font-size: .8rem;
+    color: var(--coral);
     text-transform: uppercase;
     justify-content: space-between;
   }
