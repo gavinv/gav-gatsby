@@ -4,25 +4,25 @@ import styled from 'styled-components'
 import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from './../components/Layout'
 import SEO from './../components/SEO'
+import Button from './../components/Button'
 
 const FormPanel = styled.div`
   max-width: 80vw;
-  margin: 0 auto;
   display: inline-grid;
-  height: 64vh;
-  width: 40vw;
-  margin: 0 auto;
-  background-color: #63636333;
-  backdrop-filter: blur(8px) brightness(88%) contrast(104%);
-  border-radius: 8px 24px 8px 24px;
+  font-variation-settings: "CASL" 0, "ital" 1;
   a {
-    font-family: Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 300;
-    font-size: 24px;
+    font-weight: 320;
+    font-size: 1.32rem;
+    transition: 250ms;
+    text-decoration: underline dotted 1px; 
+    &:hover {
+      font-weight: 640;
+      font-variation-settings: "CASL" 1 "ital" 1;
+    }
   }
   .contact-form {
     display: grid;
-    grid-template: 'f l' 1fr 'e p' 1fr 'm m' 2fr 'r r' .5fr / 1fr 1fr;
+    grid-template: 'f l' 1fr 'e p' 1fr 'm m' 2fr 'r r' .5fr 'x s' .5fr / 1fr 1fr;
     grid-column-gap: .4em;
     label {
       font-size: 12px;
@@ -35,8 +35,8 @@ const FormPanel = styled.div`
       &[for='message'] {grid-area: m;}
     }
     .reset {grid-area: r; width: 24%;}
-    .cancel {}
-    .submit {}
+    .cancel {justify-self: end;}
+    .submit {justify-self: end;}
     input:-internal-autofill-selected {
       background-color: var(--beige) !important;
     }
@@ -53,8 +53,19 @@ const FormPanel = styled.div`
     input {
       border: none;
       border-bottom: 1px solid var(--coral);
+      border-radius: none;
+    }
+    textarea {
+      border-radius: 16px 16px 4px 16px;
     }
   }
+`
+
+const ButtonWrapper = styled.div`
+  grid-area: s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `
 
 export default function Contact() {
@@ -63,6 +74,7 @@ export default function Contact() {
     <SEO title='Contact' />
       <ErrorBoundary>
         <Layout>
+        <section className='main blurred'>
           <FormPanel>
             <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
               <span>
@@ -105,11 +117,27 @@ export default function Contact() {
                   className='input--textarea'
                 />
               </label>
-              <input className='reset' type="reset" value="Reset" />
-              <button className='cancel' type="cancel">x</button>
-              <button className='submit' type="submit">Submit</button>
+                <Button className='reset' type="reset" value="reset" 
+                  height='3.2rem'
+                  label='reset'
+                />
+              <ButtonWrapper>
+                <Button className='cancel' type="cancel" value='cancel'
+                  height='3.2rem'
+                  width='3.2rem'
+                  label='x'
+                  rad='24px 8px 24px 24px'
+                />
+                <Button 
+                  htmlFor='contact'
+                  className='submit' type="submit" 
+                  height='3.2rem' 
+                  label='submit'
+                />
+              </ButtonWrapper>
             </form>
           </FormPanel>
+          </section>
         </Layout>
       </ErrorBoundary>
     </>
