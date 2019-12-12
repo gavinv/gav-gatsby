@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import styled from 'styled-components'
 
 import ErrorBoundary from "./../components/ErrorBoundary"
 import Layout from "../components/Layout"
@@ -6,6 +7,11 @@ import Button from '../components/Button'
 import Link from '../components/Link'
 import SEO from '../components/SEO'
 import useWindowSize from '../hooks/useWindowSize'
+
+const HomepageButton = styled(Button)`
+  height: 4rem;
+  width: 8rem;
+`
 
 function Buttons() {
   const viewport = useWindowSize().width
@@ -27,21 +33,16 @@ function Buttons() {
     return (
       <>
         <Link to="about">
-          <Button bg="var(--violet)" fg="var(--coral)" fx="none" label="About"/>
+          <HomepageButton bg="var(--violet)" fg="var(--coral)" label="About"/>
         </Link>
         <Link to="portfolio">
-          <Button bg="var(--magenta)" fg="var(--coral)" fx="none"
-            rad="24px 8px 24px 24px" label="Portfolio"
-          />
+          <HomepageButton bg="var(--magenta)" fg="var(--coral)" rad="24px 8px 24px 24px" label="Portfolio"/>
         </Link>
         <Link to="blog">
-          <Button bg="var(--orange)" fg="var(--coral)" fx="none" rad="24px 24px 24px 8px" label="Blog"
-          />
+          <HomepageButton bg="var(--orange)" fg="var(--coral)" rad="24px 24px 24px 8px" label="Blog" disabled/>
         </Link>
         <Link to="contact">
-          <Button fg="var(--beige)" bg="var(--yellow)" fx="none"
-            rad="24px 24px 8px 24px" label="Contact"
-          />
+          <HomepageButton fg="var(--beige)" bg="var(--yellow)" rad="24px 24px 8px 24px" label="Contact"/>
         </Link>
       </>
     )

@@ -6,7 +6,9 @@ import 'typeface-lato'
 import './font.css'
 import "./styles.css"
 
-export const theme = {}
+export const theme = {
+  
+}
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -112,8 +114,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 2rem;
     backdrop-filter: blur(8px) brightness(80%);
   }
-  .menu-item,
-  a {
+  .menu-item, a {
     color: var(--coral);
     text-decoration: none;
   }
