@@ -1,6 +1,6 @@
 import React from "react";
 
-import SocialLinks from "../assets/SocialLinks";
+import SocialLinks from "./SocialLinks";
 
 const Footer = props => {
   return (
