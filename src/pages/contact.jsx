@@ -104,7 +104,8 @@ export default function Contact() {
               className='contact-form'
               name='contact'
               method="post"
-              action="#"
+              action="/success"
+              netlify
             >
               <label htmlFor='firstname'>
                 First name
@@ -143,7 +144,6 @@ export default function Contact() {
                   htmlFor='contact'
                   className='submit' type="submit"
                   label='Submit'
-                  disabled
                 />
               </ButtonWrapper>
             </ContactForm>
