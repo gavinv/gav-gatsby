@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import ErrorBoundary from "./../components/ErrorBoundary"
 import Layout from "../components/Layout"
-import Button from '../components/Button'
+import Button from '../components/Inputs/Button'
 import Link from '../components/Link'
 import SEO from '../components/SEO'
 import useWindowSize from '../hooks/useWindowSize'

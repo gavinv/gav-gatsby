@@ -22,5 +22,5 @@ export default function SocialLinks() {
         <FontAwesomeIcon icon={['fab', 'linkedin']}/>
       </a>
     </>
-  );
+  )
 }
