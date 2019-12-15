@@ -9,7 +9,7 @@ library.add(fab, faCheckSquare)
 export default function SocialLinks() {
   return (
     <>
-      <a className='menu-item' href='https://dribbble.com/greyghost'>
+      <a className='menu-item' href='https://dribbble.com/gavinv'>
         <FontAwesomeIcon icon={['fab', 'dribbble']}/>
       </a>
       <a className='menu-item' href='https://twitter.com/_gvaught'>
