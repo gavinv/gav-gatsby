@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from './../components/Layout'
 import SEO from './../components/SEO'
-import Button from './../components/Button'
+import Button from './../components/Inputs/Button'
+import Input from './../components/Inputs/Input'
 
 const FormPanel = styled.div`
   max-width: 80vw;
@@ -14,14 +15,14 @@ const FormPanel = styled.div`
     font-weight: 320;
     font-size: 1.2rem;
     transition: 250ms;
-    text-decoration: underline dotted 1px; 
+    text-decoration: underline dotted 1px;
     &:hover {
       font-weight: 640;
       font-variation-settings: "CASL" 1 "ital" 1;
     }
   }
   .contact-form {
-    
+
   }
 `
 
@@ -35,7 +36,7 @@ const Cancel = styled(Button)`
   font-weight: 256;
   font-size: 3.2rem;
   width: 3.2rem;
-  line-height: .8rem;
+  line-height: 0;
   :hover {
     font-weight: 564;
   }
@@ -100,36 +101,36 @@ export default function Contact() {
             </p>
             <p>...or drop me a message from right here:</p>
             <ContactForm
-              className='contact-form' 
-              name='contact' 
-              method="post" 
+              className='contact-form'
+              name='contact'
+              method="post"
               action="#"
             >
               <label htmlFor='firstname'>
                 First name
-                <input type="text" name="firstname" className='input--text' />
+                <Input type="text" name="firstname" className='input--text' />
               </label>
               <label htmlFor='lastname'>
                 Last name
-                <input type="text" name="lastname" className='input--text' />
+                <Input type="text" name="lastname" className='input--text' />
               </label>
               <label htmlFor='email'>
                 Email
-                <input type="email" name="email" className='input--email' />
+                <Input type="email" name="email" className='input--email' />
               </label>
               <label htmlFor='phone'>
                 Phone
-                <input type="phone" name="phone" className='input--phone' />
+                <Input type="phone" disabled name="phone" className='input--phone' />
               </label>
               <label htmlFor='message'>
                 Message
-                <textarea 
-                  name="message" 
-                  rows="5" 
+                <textarea
+                  name="message"
+                  rows="5"
                   className='input--textarea'
                 />
               </label>
-                <Button className='reset' type="reset" value="reset" 
+                <Button className='reset' type="reset" value="reset"
                   height='3.2rem'
                   label='Reset'
                 />
@@ -138,10 +139,11 @@ export default function Contact() {
                   label='&times;'
                   rad='24px 8px 24px 24px'
                 />
-                <Button 
+                <Button
                   htmlFor='contact'
-                  className='submit' type="submit" 
+                  className='submit' type="submit"
                   label='Submit'
+                  disabled
                 />
               </ButtonWrapper>
             </ContactForm>
