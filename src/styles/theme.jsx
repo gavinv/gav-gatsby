@@ -7,7 +7,7 @@ import './font.css'
 import "./styles.css"
 
 export const theme = {
-  
+
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -55,7 +55,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1.heading {
-    font-family: 'Lato Black', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 900;
     font-size: 4.5rem;
     letter-spacing: -3.2px;
@@ -69,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
     align-self: safe;
     justify-items: end;
     margin-left: 3rem;
-    font-variation-settings: 
+    font-variation-settings:
       "MONO" 1,
       "CASL" 0,
       "slnt" 0,

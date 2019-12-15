@@ -36,7 +36,7 @@ function Buttons() {
           <HomepageButton bg="var(--violet)" fg="var(--coral)" label="About"/>
         </Link>
         <Link to="portfolio">
-          <HomepageButton bg="var(--magenta)" fg="var(--coral)" rad="24px 8px 24px 24px" label="Portfolio"/>
+          <HomepageButton bg="var(--magenta)" fg="var(--coral)" rad="24px 8px 24px 24px" label="Portfolio" disabled/>
         </Link>
         <Link to="blog">
           <HomepageButton bg="var(--orange)" fg="var(--coral)" rad="24px 24px 24px 8px" label="Blog" disabled/>
