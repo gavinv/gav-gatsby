@@ -8,29 +8,33 @@ variables:
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
+image: node:latest
+
+services:
+  - cypress/base:10
+
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
   key: $CI_COMMIT_REF_SLUG
   paths:
-    - node_modules
-    - cache/Cypress
+    - node_modules/
+    - cache/Cypress/
+    - .cache/
+    - public/
 
-install:
-  image: cypress/base:10
-  stage: build
-  script:
+default:
+  before_script:
     - npm install
 
 test:
-  image: cypress/base:10
   stage: test
   script:
     # print CI environment variables for reference
     # - $(npm bin)/print-env CI
     - npm install
     # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e
+    - npx nyc@14 cypress
   artifacts:
     when: always
     paths:
@@ -40,22 +44,20 @@ test:
 
 deploy_staging:
   stage: deploy
-  image: cypress/base:10
   script:
     - npm run build
   environment:
-    name: stage/$CI_COMMIT_REF_NAME
+    name: staging
     url: https://stage.gavinvaught.com
   only:
     - staging
 
 deploy_prod:
   stage: deploy
-  image: cypress/base:10
   script:
     - npm run build
   environment:
-    name: prod/$CI_COMMIT_REF_NAME
+    name: production
     url: https://gavinvaught.com
   only:
     - production

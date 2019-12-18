@@ -14,7 +14,6 @@ module.exports = {
   pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */ ,
   plugins: [
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
