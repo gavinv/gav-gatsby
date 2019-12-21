@@ -9,9 +9,6 @@ variables:
 
 image: node:latest
 
-services:
-  - cypress/base:10
-
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
@@ -35,6 +32,7 @@ default:
 
 test:
   stage: test
+  image: cypress/base:10
   script:
     # run Cypress test in load balancing mode, pass id to tie jobs together
     - npm run test
