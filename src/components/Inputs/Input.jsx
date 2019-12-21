@@ -37,15 +37,25 @@ const BaseInput = styled.input`
     `}
 
 `
+class Input extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-const Input = React.forwardRef(function Input(props, ref) {
-  return (
-    <BaseInput
-      ref={ref}
-      {...props}
-    />
-  )
-})
+  handleChange = e => {
+    this.props.onChange(e.target.value)
+  }
+
+  render() {
+    return (
+      <BaseInput
+        value={this.props.value}
+        onChange={this.handleChange}
+        {...this.props}
+      />
+    )
+  }
+}
 
 Input.propTypes = {
   multiline: PropTypes.bool,

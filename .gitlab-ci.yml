@@ -43,7 +43,7 @@ test:
     paths:
       - cypress/videos/**/*.mp4
       - cypress/screenshots/**/*.png
-      - public/
+      - .cache
     expire_in: 7 days
 
 deploy_staging:
@@ -55,7 +55,7 @@ deploy_staging:
     url: https://stage.gavinvaught.com
   artifacts:
     paths:
-      - public/
+      - .cache
   only:
     - staging
 
@@ -68,7 +68,7 @@ deploy_prod:
     url: https://gavinvaught.com
   artifacts:
     paths:
-      - public/
+      - .cache
   only:
     - production
   after_script:

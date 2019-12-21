@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   .main-content {
     max-width: 88vw;
     margin: 0 auto;
+    display: flex;
   }
   .grid {
     display: grid;
@@ -59,7 +60,6 @@ export const GlobalStyle = createGlobalStyle`
     grid-template-columns: 1fr;
     justify-items: start;
     margin: 1rem auto;
-    padding-top: 1rem;
   }
 
   h1.heading {
@@ -121,10 +121,12 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: space-between;
     padding: 2rem;
     backdrop-filter: blur(8px) brightness(80%);
+    width: 100%;
   }
   .menu-item, a {
     color: var(--coral);
     text-decoration: none;
+    text-align: center;
   }
   .mainnavigation {
     max-width: 88vw;
@@ -217,9 +219,14 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--coral);
     text-transform: uppercase;
     justify-content: space-between;
+    max-width: 56vw;
+    width: 100%;
+    margin: 2rem;
   }
   .pages > a {
-    padding: 2rem 0 2rem 4rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 8vw;
   }
   h1,
   h2,
