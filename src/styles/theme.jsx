@@ -1,14 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import 'typeface-lato'
 
 import './font.css'
-import "./styles.css"
+import './styles.css'
 
-export const theme = {
-  
-}
+export const theme = {}
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -216,7 +214,7 @@ export const GlobalStyle = createGlobalStyle`
   h1,
   h2,
   h3 {
-    margin: 0 auto;
+    margin: 1rem;
   }
   p {
     margin-bottom: 1rem;
