@@ -25,7 +25,7 @@ export const isAuthenticated = () => {
   if (!isBrowser) {
     return;
   }
-  
+
   return localStorage.getItem("isLoggedIn") === "true"
 }
 
@@ -33,7 +33,7 @@ export const login = () => {
   if (!isBrowser) {
     return
   }
-  
+
   auth.authorize()
 }
 
@@ -43,7 +43,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     cb()
     return
   }
-  
+
   if (authResult && authResult.accessToken && authResult.idToken) {
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime()
     tokens.accessToken = authResult.accessToken
@@ -60,7 +60,7 @@ export const handleAuthentication = () => {
   if (!isBrowser) {
     return;
   }
-  
+
   auth.parseHash(setSession())
 }
 

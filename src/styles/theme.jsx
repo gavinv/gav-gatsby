@@ -1,19 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { css, ThemeProvider, createGlobalStyle } from 'styled-components'
+import theme from 'styled-theming'
 import 'typeface-lato'
 
 import './font.css'
 import './styles.css'
 
-export const theme = {}
+const mode = theme('mode', {
+  light: css`
+    background-color: var(--light);
+    color: var(--beige);
+  `,
+  dark: css`
+    background-color: var(--dark);
+    color: var(--coral);
+  `,
+})
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background-color: var(--dark);
-    color: var(--coral);
+    ${mode}
     height: auto;
-    width: 100%;
+    width: 100vw;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
   }
@@ -30,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   .main-content {
     max-width: 88vw;
     margin: 0 auto;
+    display: flex;
   }
   .grid {
     display: grid;
@@ -49,11 +60,10 @@ export const GlobalStyle = createGlobalStyle`
     grid-template-columns: 1fr;
     justify-items: start;
     margin: 1rem auto;
-    padding-top: 1rem;
   }
 
   h1.heading {
-    font-family: 'Lato Black', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 900;
     font-size: 4.5rem;
     letter-spacing: -3.2px;
@@ -67,7 +77,7 @@ export const GlobalStyle = createGlobalStyle`
     align-self: safe;
     justify-items: end;
     margin-left: 3rem;
-    font-variation-settings: 
+    font-variation-settings:
       "MONO" 1,
       "CASL" 0,
       "slnt" 0,
@@ -101,20 +111,22 @@ export const GlobalStyle = createGlobalStyle`
     grid-template: '. .' 1fr '. .' 1fr / 1fr 1fr;
     grid-gap: 4rem;
     max-width: 314px;
-    font-family: Roboto;
+    font-family: 'Recursive', sans-serif;
     font-weight: 300;
   }
   .blurred {
     display: flex;
-    background-color: #63636333;
+    background-color: rgba(96,96,96,.32);
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     padding: 2rem;
     backdrop-filter: blur(8px) brightness(80%);
+    width: 100%;
   }
   .menu-item, a {
     color: var(--coral);
     text-decoration: none;
+    text-align: center;
   }
   .mainnavigation {
     max-width: 88vw;
@@ -200,16 +212,21 @@ export const GlobalStyle = createGlobalStyle`
   .pages {
     display: inline-flex;
     align-self: center;
-    font-family: Roboto;
+    font-family: 'Recursive', sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: .8rem;
     color: var(--coral);
     text-transform: uppercase;
     justify-content: space-between;
+    max-width: 56vw;
+    width: 100%;
+    margin: 2rem;
   }
   .pages > a {
-    padding: 2rem 0 2rem 4rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 8vw;
   }
   h1,
   h2,
@@ -221,11 +238,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
-export default function Theme(props) {
+function Theme(props) {
   return (
     <>
-      <GlobalStyle darkmode />
-      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+      <ThemeProvider theme={{ mode: 'dark' }}>
+        <GlobalStyle>{props.children}</GlobalStyle>
+      </ThemeProvider>
     </>
   )
 }
@@ -233,3 +251,5 @@ export default function Theme(props) {
 Theme.propTypes = {
   children: PropTypes.node,
 }
+
+export default Theme

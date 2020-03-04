@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from './../components/Layout/Layout'
 import SEO from './../components/SEO'
+import Container from './../components/Layout/Container'
 
 const Wrapper = styled.div`
   filter: grayscale(1) opacity(0.8);
@@ -42,18 +43,20 @@ export default function About() {
       <ErrorBoundary>
         <Layout>
           <section className='main blurred'>
-            <h1 className='section-heading'>About Me</h1>
-            <p>View/Download my current resume:</p>
-            <Wrapper>
-              <a download href={pdfAndImage.PdfQuery.publicURL}>
-                <Img
-                  height='100%'
-                  grayscale={true}
-                  fluid={pdfAndImage.ImageQuery.childImageSharp.fluid}
-                  key={pdfAndImage.PdfQuery.uid}
-                />
-              </a>
-            </Wrapper>
+            <Container>
+              <h1 className='section-heading'>About Me</h1>
+              <p>View/Download my current resume:</p>
+              <Wrapper>
+                <a download href={pdfAndImage.PdfQuery.publicURL}>
+                  <Img
+                    height='100%'
+                    grayscale={true}
+                    fluid={pdfAndImage.ImageQuery.childImageSharp.fluid}
+                    key={pdfAndImage.PdfQuery.uid}
+                  />
+                </a>
+              </Wrapper>
+            </Container>
           </section>
         </Layout>
       </ErrorBoundary>

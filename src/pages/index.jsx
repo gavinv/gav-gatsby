@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from '../components/Layout/Layout'
-import Button from '../components/Button'
+import ErrorBoundary from './../components/ErrorBoundary'
+import Button from '../components/Inputs/Button'
 import Link from '../components/Link'
 import SEO from '../components/SEO'
 import useWindowSize from '../hooks/useWindowSize'
@@ -41,6 +41,7 @@ function Buttons() {
             fg='var(--coral)'
             rad='24px 8px 24px 24px'
             label='Portfolio'
+            disabled
           />
         </Link>
         <Link to='blog'>

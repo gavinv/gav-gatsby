@@ -10,11 +10,12 @@
     "url": "https://github.com/gvaught/gav-gatsby/issues"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/free-regular-svg-icons": "^5.11.2",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-regular-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
+<<<<<<< HEAD
     "@hot-loader/react-dom": "^16.12.0",
     "@reach/router": "^1.3.3",
     "auth0-js": "^9.12.2",
@@ -35,29 +36,73 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-remark": "^2.6.39",
     "gatsby-transformer-sharp": "^2.3.16",
+=======
+    "@hot-loader/react-dom": "^16.11.0",
+    "@reach/router": "^1.2.1",
+    "auth0-js": "^9.12.1",
+    "babel-plugin-styled-components": "^1.10.6",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.18.16",
+    "gatsby-image": "^2.2.37",
+    "gatsby-plugin-feed": "^2.3.25",
+    "gatsby-plugin-google-analytics": "^2.1.31",
+    "gatsby-plugin-manifest": "^2.2.34",
+    "gatsby-plugin-netlify": "^2.1.30",
+    "gatsby-plugin-offline": "^3.0.30",
+    "gatsby-plugin-react-helmet": "^3.1.18",
+    "gatsby-plugin-sharp": "^2.3.10",
+    "gatsby-plugin-sitemap": "^2.2.24",
+    "gatsby-plugin-styled-components": "^3.1.16",
+    "gatsby-plugin-typography": "^2.3.20",
+    "gatsby-source-filesystem": "^2.1.43",
+    "gatsby-transformer-sharp": "^2.3.9",
+>>>>>>> e0c07161c6862c1d678663bb4b2bbb3ef518d597
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
+<<<<<<< HEAD
     "react-typography": "^0.16.19",
     "styled-components": "^5.0.1",
+=======
+    "styled-components": "^4.4.1",
+>>>>>>> e0c07161c6862c1d678663bb4b2bbb3ef518d597
     "styled-props": "^1.1.2",
+    "styled-theming": "^2.2.0",
     "typeface-lato": "0.0.75",
+<<<<<<< HEAD
     "typeface-open-sans": "0.0.75",
     "typeface-roboto": "0.0.75",
     "typography": "^0.16.19",
     "webpack": "^4.42.0"
+=======
+    "webpack": "^4.41.4"
+>>>>>>> e0c07161c6862c1d678663bb4b2bbb3ef518d597
   },
   "devDependencies": {
     "@bahmutov/print-env": "^1.1.0",
+    "babel-jest": "^24.9.0",
+    "babel-preset-gatsby": "^0.2.26",
     "colon-names": "1.0.0",
+<<<<<<< HEAD
     "cypress": "^4.1.0",
     "globby": "^11.0.0",
+=======
+    "cypress": "^3.8.0",
+    "globby": "9.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+>>>>>>> e0c07161c6862c1d678663bb4b2bbb3ef518d597
     "jquery-doubletaptogo": "^3.0.2",
     "prettier": "^1.19.1",
     "react-hot-loader": "^4.12.16",
+    "react-test-renderer": "^16.12.0",
     "start-server-and-test": "^1.10.6",
+<<<<<<< HEAD
     "style-loader": "^1.1.3",
+=======
+    "style-loader": "^1.1.1",
+>>>>>>> e0c07161c6862c1d678663bb4b2bbb3ef518d597
     "svg-inline-loader": "^0.8.0",
     "webpack-cli": "^3.3.11"
   },
@@ -70,6 +115,6 @@
     "build": "gatsby build",
     "cy:open": "cypress open",
     "cy:run": "cypress run --record --key 2ab8191c-a0c9-440e-9b6d-f3c3e5b30305",
-    "e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run"
+    "test": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test develop http://localhost:8000 cy:run"
   }
 }

@@ -1,5 +1,4 @@
 stages:
-  - build
   - test
   - deploy
 # to cache both npm modules and Cypress binary we use environment variables
@@ -8,54 +7,67 @@ variables:
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
+image: node:latest
+
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
 cache:
   key: $CI_COMMIT_REF_SLUG
   paths:
-    - node_modules
-    - cache/Cypress
+    - node_modules/
+    - cache/Cypress/
+    - .cache/
 
-install:
-  image: cypress/base:10
-  stage: build
-  script:
+default:
+  before_script:
+    - |
+      if [[ -z "$CI_COMMIT_TAG" ]]; then
+        export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG}
+        export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_SHA}
+      else
+        export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE}
+        export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_TAG}
+      fi
     - npm install
 
 test:
-  image: cypress/base:10
   stage: test
+  image: cypress/base:10
   script:
-    # print CI environment variables for reference
-    # - $(npm bin)/print-env CI
-    - npm install
     # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e
+    - npm run test
   artifacts:
     when: always
     paths:
       - cypress/videos/**/*.mp4
       - cypress/screenshots/**/*.png
-    expire_in: 1 day
+      - .cache
+    expire_in: 7 days
 
 deploy_staging:
   stage: deploy
-  image: cypress/base:10
   script:
-    - npm run build
+    - ./node_modules/.bin/gatsby build --prefix-paths
   environment:
-    name: stage/$CI_COMMIT_REF_NAME
+    name: staging
     url: https://stage.gavinvaught.com
+  artifacts:
+    paths:
+      - .cache
   only:
     - staging
 
 deploy_prod:
   stage: deploy
-  image: cypress/base:10
   script:
-    - npm run build
+    - ./node_modules/.bin/gatsby build --prefix-paths
   environment:
-    name: prod/$CI_COMMIT_REF_NAME
+    name: production
     url: https://gavinvaught.com
+  artifacts:
+    paths:
+      - .cache
   only:
     - production
+  after_script:
+    - curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c?trigger_branch=production&trigger_title=GitLab+CI+hook

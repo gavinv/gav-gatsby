@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from './../components/Layout/Layout'
 import SEO from './../components/SEO'
-import Button from './../components/Button'
+import Button from './../components/Inputs/Button'
+import Input from './../components/Inputs/Input'
 
 const FormPanel = styled.div`
   max-width: 80vw;
-  display: inline-grid;
+  display: block;
+  margin: 2rem;
   font-variation-settings: 'CASL' 0, 'ital' 1;
   a {
     font-weight: 320;
@@ -32,9 +34,9 @@ const ButtonWrapper = styled.div`
 `
 const Cancel = styled(Button)`
   font-weight: 256;
-  font-size: 3.2rem;
+  font-size: 2rem;
   width: 3.2rem;
-  line-height: 0.8rem;
+  line-height: 0;
   :hover {
     font-weight: 564;
   }
@@ -91,84 +93,160 @@ const ContactForm = styled.form`
   }
 `
 
-export default function Contact() {
-  return (
-    <>
-      <SEO title='Contact' />
-      <ErrorBoundary>
-        <Layout>
-          <section className='main blurred'>
-            <FormPanel>
-              <p style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-                <span>
-                  <div>call/text:</div>
-                  <a href='tel:+12108441520'>+1 210.844.1520</a>
-                </span>
-                <span>
-                  <div>email:</div>
-                  <a href='mailto:gavinvaught@gmail.com'>
-                    gavinvaught@gmail.com
-                  </a>
-                </span>
-              </p>
-              <p>...or drop me a message from right here:</p>
-              <ContactForm
-                className='contact-form'
-                name='contact'
-                method='post'
-                action='#'
-              >
-                <label htmlFor='firstname'>
-                  First name
-                  <input type='text' name='firstname' className='input--text' />
-                </label>
-                <label htmlFor='lastname'>
-                  Last name
-                  <input type='text' name='lastname' className='input--text' />
-                </label>
-                <label htmlFor='email'>
-                  Email
-                  <input type='email' name='email' className='input--email' />
-                </label>
-                <label htmlFor='phone'>
-                  Phone
-                  <input type='phone' name='phone' className='input--phone' />
-                </label>
-                <label htmlFor='message'>
-                  Message
-                  <textarea
-                    name='message'
-                    rows='5'
-                    className='input--textarea'
-                  />
-                </label>
-                <Button
-                  className='reset'
-                  type='reset'
-                  value='reset'
-                  height='3.2rem'
-                  label='Reset'
-                />
-                <ButtonWrapper>
-                  <Cancel
-                    className='cancel'
-                    type='cancel'
-                    value='cancel'
-                    label='&times;'
-                    rad='24px 8px 24px 24px'
-                  />
+class Contact extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      dirty: false,
+      valid: false,
+      values: {},
+    }
+    this.inputRef = React.createRef()
+  }
+
+  componentDidMount() {
+    this.setState({
+      values: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        phone: '',
+        message: '',
+      },
+    })
+  }
+
+  handleChange = e => {
+    const target = e.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+
+    this.setState(prevState => ({
+      values: {
+        ...prevState.values,
+        [name]: value,
+      },
+    }))
+  }
+
+  cancelSubmission = e => {
+    e.preventDefault()
+    window.location.pathname = '/'
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
+  render() {
+    return (
+      <>
+        <SEO title='Contact' />
+        <ErrorBoundary>
+          <Layout>
+            <section className='main blurred'>
+              <FormPanel>
+                <p style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                  <span>
+                    <p>call/text:</p>
+                    <a href='tel:+12108441520'>+1 210.844.1520</a>
+                  </span>
+                  <span>
+                    <p>email:</p>
+                    <a href='mailto:gavinvaught@gmail.com'>
+                      gavinvaught@gmail.com
+                    </a>
+                  </span>
+                </p>
+                <p>...or drop me a message from right here:</p>
+                <ContactForm
+                  className='contact-form'
+                  name='contact'
+                  method='post'
+                  action='/success'
+                  data-netlify='true'
+                  data-netlify-honeypot='bot-field'
+                >
+                  <input type='hidden' name='form-name' value='contact' />
+                  <label htmlFor='firstname'>
+                    First name
+                    <Input
+                      value={this.state.values.firstname}
+                      onChange={e => this.handleChange(e)}
+                      type='text'
+                      name='firstname'
+                      className='input--text'
+                    />
+                  </label>
+                  <label htmlFor='lastname'>
+                    Last name
+                    <Input
+                      value={this.state.values.lastname}
+                      onChange={e => this.handleChange(e)}
+                      type='text'
+                      name='lastname'
+                      className='input--text'
+                    />
+                  </label>
+                  <label htmlFor='email'>
+                    Email
+                    <Input
+                      value={this.state.values.email}
+                      onChange={e => this.handleChange(e)}
+                      type='email'
+                      name='email'
+                      className='input--email'
+                    />
+                  </label>
+                  <label htmlFor='phone'>
+                    Phone
+                    <Input
+                      value={this.state.values.phone}
+                      onChange={e => this.handleChange(e)}
+                      type='phone'
+                      name='phone'
+                      className='input--phone'
+                    />
+                  </label>
+                  <label htmlFor='message'>
+                    Message
+                    <textarea
+                      value={this.state.values.message}
+                      onChange={e => this.handleChange(e)}
+                      rows='5'
+                      name='message'
+                      className='input--textarea'
+                    />
+                  </label>
                   <Button
-                    htmlFor='contact'
-                    className='submit'
-                    type='submit'
-                    label='Submit'
+                    className='reset'
+                    type='reset'
+                    height='3.2rem'
+                    label='Reset'
                   />
-                </ButtonWrapper>
-              </ContactForm>
-            </FormPanel>
-          </section>
-        </Layout>
-      </ErrorBoundary>
-    </>
-  )
+                  <ButtonWrapper>
+                    <Cancel
+                      className='cancel'
+                      type='cancel'
+                      label='&times;'
+                      rad='24px 8px 24px 24px'
+                      onClick={this.cancelSubmission}
+                    />
+                    <Button
+                      htmlFor='contact'
+                      className='submit'
+                      type='submit'
+                      label='Submit'
+                    />
+                  </ButtonWrapper>
+                </ContactForm>
+              </FormPanel>
+            </section>
+          </Layout>
+        </ErrorBoundary>
+      </>
+    )
+  }
 }
+
+export default Contact

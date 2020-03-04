@@ -12,18 +12,18 @@ class VariLogo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isExpanded: false
+      expanded: false
     }
   }
 
   componentDidMount() {
     if (this.props.viewport >= 640 || this.props.route === '/') {
-      this.setState({ isExpanded: true })
+      this.setState({ expanded: true })
     }
   }
 
   render() {
-    return (this.state.isExpanded === true)
+    return (this.state.expanded === true)
       ? <Expanded />
       : <Collapsed />
   }
