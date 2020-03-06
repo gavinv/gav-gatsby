@@ -1,14 +1,15 @@
 {
   "name": "gav-gatsby",
-  "description": "gatsby deployment for personal portfolio front-end",
+  "description": "A personal portfolio webapp built with React using a barebones Gatsby.JS framework",
   "author": "Gavin Vaught <gavinvaught@gmail.com>",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "homepage": "https://gavinvaught.com",
   "repository": "https://github.com/gvaught/gav-gatsby",
   "bugs": {
     "url": "https://github.com/gvaught/gav-gatsby/issues"
   },
+  "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
@@ -67,7 +68,6 @@
     "svg-inline-loader": "^0.8.0",
     "webpack-cli": "^3.3.11"
   },
-  "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
