@@ -1,14 +1,20 @@
 // ./gatsby-node.js
-exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions
-  if (page.path.match(/^\/account/)) {
-    page.matchPath = "/account/*"
-    createPage(page)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
   }
 }
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === "build-html") {
+  if (stage === 'build-html') {
     /**
      * During the build step, `auth0-js` will break because it relies on
      * browser-specific APIs. Fortunately, we don’t need it during the build.

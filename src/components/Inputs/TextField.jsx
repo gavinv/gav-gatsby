@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-const BaseInput = styled.input`
+const BaseTextField = styled.input`
   font-family: ${props =>
     props.monospace
       ? 'var(--font-family-monospace)'
@@ -37,37 +37,60 @@ const BaseInput = styled.input`
     `}
 
 `
-class Input extends React.Component {
+class TextField extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      focus: null,
+      dirty: null,
+      valid: null,
+    }
+  }
+
+  handleFocus = e => {
+    this.setState({
+      focus: true,
+    })
   }
 
   handleChange = e => {
     this.props.onChange(e.target.value)
+    this.setState({
+      dirty: true,
+    })
   }
+
+  handleBlur = e => {
+    this.setState(prevState => ({
+      focus: !prevState.focus,
+    }))
+  }
+
+  checkValidity() {}
 
   render() {
     return (
-      <BaseInput
-        value={this.props.value}
+      <BaseTextField
+        onFocus={this.handleFocus}
         onChange={this.handleChange}
+        onBlur={this.handleBlur}
         {...this.props}
       />
     )
   }
 }
 
-Input.propTypes = {
+TextField.propTypes = {
   multiline: PropTypes.bool,
   fullWidth: PropTypes.bool,
   disabled: PropTypes.bool,
   margin: PropTypes.oneOf(['dense', 'none']),
 }
 
-Input.defaultProps = {
+TextField.defaultProps = {
   multiline: false,
   fullWidth: false,
   disabled: false,
 }
 
-export default Input
+export default TextField

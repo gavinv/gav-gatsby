@@ -5,7 +5,7 @@ import ErrorBoundary from './../components/ErrorBoundary'
 import Layout from './../components/Layout/Layout'
 import SEO from './../components/SEO'
 import Button from './../components/Inputs/Button'
-import Input from './../components/Inputs/Input'
+import TextField from './../components/Inputs/TextField'
 
 const FormPanel = styled.div`
   max-width: 80vw;
@@ -97,7 +97,6 @@ class Contact extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dirty: false,
       valid: false,
       values: {},
     }
@@ -146,7 +145,9 @@ class Contact extends React.Component {
           <Layout>
             <section className='main blurred'>
               <FormPanel>
-                <p style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                <div
+                  style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+                >
                   <span>
                     <p>call/text:</p>
                     <a href='tel:+12108441520'>+1 210.844.1520</a>
@@ -157,7 +158,7 @@ class Contact extends React.Component {
                       gavinvaught@gmail.com
                     </a>
                   </span>
-                </p>
+                </div>
                 <p>...or drop me a message from right here:</p>
                 <ContactForm
                   className='contact-form'
@@ -170,8 +171,7 @@ class Contact extends React.Component {
                   <input type='hidden' name='form-name' value='contact' />
                   <label htmlFor='firstname'>
                     First name
-                    <Input
-                      value={this.state.values.firstname}
+                    <TextField
                       onChange={e => this.handleChange(e)}
                       type='text'
                       name='firstname'
@@ -180,8 +180,7 @@ class Contact extends React.Component {
                   </label>
                   <label htmlFor='lastname'>
                     Last name
-                    <Input
-                      value={this.state.values.lastname}
+                    <TextField
                       onChange={e => this.handleChange(e)}
                       type='text'
                       name='lastname'
@@ -190,8 +189,7 @@ class Contact extends React.Component {
                   </label>
                   <label htmlFor='email'>
                     Email
-                    <Input
-                      value={this.state.values.email}
+                    <TextField
                       onChange={e => this.handleChange(e)}
                       type='email'
                       name='email'
@@ -200,8 +198,7 @@ class Contact extends React.Component {
                   </label>
                   <label htmlFor='phone'>
                     Phone
-                    <Input
-                      value={this.state.values.phone}
+                    <TextField
                       onChange={e => this.handleChange(e)}
                       type='phone'
                       name='phone'
@@ -211,7 +208,6 @@ class Contact extends React.Component {
                   <label htmlFor='message'>
                     Message
                     <textarea
-                      value={this.state.values.message}
                       onChange={e => this.handleChange(e)}
                       rows='5'
                       name='message'

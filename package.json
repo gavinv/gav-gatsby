@@ -71,7 +71,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
