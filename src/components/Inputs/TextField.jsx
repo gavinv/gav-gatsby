@@ -55,18 +55,32 @@ class TextField extends React.Component {
 
   handleChange = e => {
     this.props.onChange(e.target.value)
-    this.setState({
-      dirty: true,
-    })
+    if (e.target.value !== '') {
+      this.setState({
+        dirty: true,
+      })
+    }
   }
 
   handleBlur = e => {
     this.setState(prevState => ({
       focus: !prevState.focus,
     }))
+    this.checkValidity(e.target.value)
   }
 
-  checkValidity() {}
+  checkValidity(value) {
+    // This is a VERY basic implementation of validation. Will need to beef it up in later iterations.
+    let bool = null
+    if (typeof value !== String) {
+      bool = true
+    } else {
+      bool = false
+    }
+    this.setState({
+      valid: bool,
+    })
+  }
 
   render() {
     return (
