@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   max-width: 100vw;
   max-height: 100vh;
   z-index: -1;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -16vw;
   overflow: hidden;

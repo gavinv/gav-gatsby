@@ -5,6 +5,7 @@ import MainNav from './MainNav'
 import Blobs from './Blobs'
 import Footer from './Footer'
 import SocialLinks from './../SocialLinks'
+import Container from './Container'
 
 export default function Layout(props, location) {
   return (
@@ -12,7 +13,9 @@ export default function Layout(props, location) {
       <Theme />
       <Blobs />
       <MainNav />
-          <main className='main-content'>{props.children}</main>
+      <Container id='main-content' disableGutters>
+        {props.children}
+      </Container>
       <Footer>
         <SocialLinks />
       </Footer>

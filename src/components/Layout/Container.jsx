@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 export const BasicContainer = styled.div `
+  max-width: ${props => props.maxWidth ? props.maxWidth : '88vw'};
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -28,14 +29,11 @@ Container.propTypes = {
   children: PropTypes.node.isRequired,
   component: PropTypes.elementType,
   disableGutters: PropTypes.bool,
-  // fixed: PropTypes.bool,
-  // maxWidth: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', false]),
 }
 
 Container.defaultProps = {
   component: 'div',
   disableGutters: false,
-  // fixed = false,
 }
 
 export default Container

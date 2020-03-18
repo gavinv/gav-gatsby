@@ -26,9 +26,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  .main-content {
-    max-width: 88vw;
-    margin: 0 auto;
+  #___gatsby {
+    width: 100%;
+    height: 100%;
   }
   .grid {
     display: grid;
@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     grid-template-columns: 1fr;
     justify-items: start;
     margin: 1rem auto;
-    padding-top: 1rem;
+    padding: 2rem;
   }
 
   h1.heading {
@@ -108,7 +108,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #63636333;
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
-    padding: 2rem;
     backdrop-filter: blur(8px) brightness(80%);
   }
   .menu-item, a {
@@ -130,27 +129,6 @@ export const GlobalStyle = createGlobalStyle`
       .pages {
         visibility: hidden;
       }
-    }
-  }
-  .footer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
-    align-items: center;
-    justify-items: center;
-    height: 4rem;
-    position: fixed;
-    bottom: 4vh;
-    padding: 1.4rem;
-    border-radius: 8px 24px 8px 24px;
-    > .menu-item:hover {
-      border-bottom: 1px dotted #fac9ce;
-    }
-    @media screen and (min-width: 640px) {
-      right: 4vw;
-    }
-    @media screen and (max-width: 640px) {
-      left: 4vw;
     }
   }
   .homepage-content {

@@ -12,18 +12,18 @@ const Wrapper = styled.div`
     transition: 256ms;
     text-decoration: underline dotted;
     font-variation-settings: 'CASL' 0;
-    &:hover {
-      font-weight: 720;
-      font-variation-settings: 'CASL' 1;
-    }
   }
+`
+
+const Nav = styled.nav`
+  padding: 2rem;
 `
 
 const MainNav = props => {
   const viewport = useWindowSize()
   return (
     <>
-      <nav className='mainnavigation blurred'>
+      <Nav className='mainnavigation blurred'>
         <Link to='/' className='gav-expanded-container'>
           <VariLogo viewport={viewport.width} />
         </Link>
@@ -31,20 +31,20 @@ const MainNav = props => {
           <Link to='about' className='about menu-item'>
             About
           </Link>
-          <Link to='portfolio' className='projects menu-item'>
+          <Link to='.' className='projects menu-item' disabled>
             Projects
           </Link>
-          <Link to='miscellaneous' className='misc menu-item'>
+          <Link to='.' className='misc menu-item' disabled>
             Misc.
           </Link>
-          <Link to='blog' className='blog menu-item'>
+          <Link to='.' className='blog menu-item' disabled>
             Blog
           </Link>
           <Link to='contact' className='contact menu-item'>
             Contact
           </Link>
         </Wrapper>
-      </nav>
+      </Nav>
     </>
   )
 }
