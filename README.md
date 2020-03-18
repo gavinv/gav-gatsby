@@ -18,4 +18,4 @@ The result is a robust webapp that is PWA-capable.
 
 ## Why
 
-The main end-goal for the development of this particular integration is to be used as a personal portfolio and blog (and of course, the necessary functional contact form).  The blog will have RSS feed capabilities and the portfolio will serve examples or links to any relevant past projects.
+The main end-goal for the development of this project is to be used as a personal portfolio and blog (and of course, the necessary functional contact form).  The blog will have RSS feed capabilities and the portfolio will serve examples or links to any relevant past projects.

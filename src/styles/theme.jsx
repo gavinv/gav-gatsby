@@ -1,31 +1,24 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { css, ThemeProvider, createGlobalStyle } from "styled-components"
-import theme from 'styled-theming'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import 'typeface-lato'
 
 import './font.css'
-import "./styles.css"
+import './styles.css'
 
-const mode = theme('mode', {
-  light: css`
-    background-color: var(--light);
-    color: var(--beige);
-  `,
-  dark: css`
-    background-color: var(--dark);
-    color: var(--coral);
-  `,
-})
+export const theme = {}
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    ${mode}
+    background-color: var(--dark);
+    color: var(--coral);
+    width: 100%;
     height: auto;
-    width: 100vw;
-    overflow-x: hidden;
+    max-width: 100vw;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   * {
     font-family: 'Recursive', sans-serif;
@@ -33,14 +26,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  #root {
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-  .main-content {
-    max-width: 88vw;
-    margin: 0 auto;
-    display: flex;
+  #___gatsby {
+    width: 100%;
+    height: 100%;
   }
   .grid {
     display: grid;
@@ -60,10 +48,11 @@ export const GlobalStyle = createGlobalStyle`
     grid-template-columns: 1fr;
     justify-items: start;
     margin: 1rem auto;
+    padding: 2rem;
   }
 
   h1.heading {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato Black', sans-serif;
     font-weight: 900;
     font-size: 4.5rem;
     letter-spacing: -3.2px;
@@ -77,7 +66,7 @@ export const GlobalStyle = createGlobalStyle`
     align-self: safe;
     justify-items: end;
     margin-left: 3rem;
-    font-variation-settings:
+    font-variation-settings: 
       "MONO" 1,
       "CASL" 0,
       "slnt" 0,
@@ -111,15 +100,14 @@ export const GlobalStyle = createGlobalStyle`
     grid-template: '. .' 1fr '. .' 1fr / 1fr 1fr;
     grid-gap: 4rem;
     max-width: 314px;
-    font-family: 'Recursive', sans-serif;
+    font-family: Roboto;
     font-weight: 300;
   }
   .blurred {
     display: flex;
-    background-color: rgba(96,96,96,.32);
+    background-color: #63636333;
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
-    padding: 2rem;
     backdrop-filter: blur(8px) brightness(80%);
     width: 100%;
   }
@@ -143,27 +131,6 @@ export const GlobalStyle = createGlobalStyle`
       .pages {
         visibility: hidden;
       }
-    }
-  }
-  .footer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
-    align-items: center;
-    justify-items: center;
-    height: 4rem;
-    position: fixed;
-    bottom: 4vh;
-    padding: 1.4rem;
-    border-radius: 8px 24px 8px 24px;
-    > .menu-item:hover {
-      border-bottom: 1px dotted #fac9ce;
-    }
-    @media screen and (min-width: 640px) {
-      right: 4vw;
-    }
-    @media screen and (max-width: 640px) {
-      left: 4vw;
     }
   }
   .homepage-content {
@@ -212,7 +179,7 @@ export const GlobalStyle = createGlobalStyle`
   .pages {
     display: inline-flex;
     align-self: center;
-    font-family: 'Recursive', sans-serif;
+    font-family: Roboto;
     font-style: normal;
     font-weight: 300;
     font-size: .8rem;
@@ -231,19 +198,18 @@ export const GlobalStyle = createGlobalStyle`
   h1,
   h2,
   h3 {
-    margin: 0 auto;
+    margin: 1rem;
   }
   p {
     margin-bottom: 1rem;
   }
 `
 
-function Theme(props) {
+export default function Theme(props) {
   return (
     <>
-      <ThemeProvider theme={{ mode: 'dark' }}>
-        <GlobalStyle>{props.children}</GlobalStyle>
-      </ThemeProvider>
+      <GlobalStyle darkmode />
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
     </>
   )
 }
@@ -251,5 +217,3 @@ function Theme(props) {
 Theme.propTypes = {
   children: PropTypes.node,
 }
-
-export default Theme

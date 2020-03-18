@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 
 import ErrorBoundary from './../components/ErrorBoundary'
-import Layout from './../components/Layout'
+import Layout from './../components/Layout/Layout'
 import SEO from './../components/SEO'
 
 export default function Blog() {
@@ -14,5 +14,5 @@ export default function Blog() {
         </Layout>
       </ErrorBoundary>
     </>
-    )
-  }
+  )
+}

@@ -1,9 +1,8 @@
 import React from "react"
 import { silentAuth } from "./src/utils/auth"
-
 export const onInitialClientRender = () => {
   var animation = false,
-    animationstring = 'animation',
+    animationstring = 'anim',
     keyframeprefix = '',
     domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
     pfx  = '',
@@ -13,9 +12,9 @@ export const onInitialClientRender = () => {
 
   if( animation === false ) {
     for( var i = 0; i < domPrefixes.length; i++ ) {
-      if( elem.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
+      if( elem.style[ domPrefixes[i] + 'anim' ] !== undefined ) {
         pfx = domPrefixes[ i ];
-        animationstring = pfx + 'Animation';
+        animationstring = pfx + 'anim';
         keyframeprefix = '-' + pfx.toLowerCase() + '-';
         animation = true;
         break;

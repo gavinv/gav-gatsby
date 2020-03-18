@@ -31,9 +31,10 @@ const floatInverse = keyframes`
 
 const Wrapper = styled.div`
   width: auto;
+  max-width: 100vw;
   max-height: 100vh;
   z-index: -1;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -16vw;
   overflow: hidden;
@@ -48,14 +49,14 @@ const Wrapper = styled.div`
     /* will-change: transform;
     animation: ${floatInverse} 24s ease-in-out 3; */
     svg {
-      transform: rotate(180deg) translate(-8vw, 16vh);
+      transform: rotate(180deg) translate(0vw, 24vh);
     }
   }
   .blob-2 {
     /* will-change: transform;
     animation: ${float} 15.6s ease-in-out 512ms 3; */
     svg {
-    transform: rotate(80deg) translate(-24vw, -64vh);
+    transform: rotate(80deg) translate(-16vw, -48vh);
     }
   }
 `
