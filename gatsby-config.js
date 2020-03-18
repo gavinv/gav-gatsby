@@ -11,7 +11,7 @@ module.exports = {
     image: `/assets/favicon.ico`,
     twitterUsername: `@_gvaught`,
   },
-  pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */ ,
+  pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */,
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -50,8 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-139960866-1"
-      }
+        trackingId: 'UA-139960866-1',
+      },
     },
     `gatsby-plugin-react-helmet`,
     // {
