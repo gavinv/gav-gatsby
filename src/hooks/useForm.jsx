@@ -35,7 +35,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   }, [state, validationSchema])
 
   // Used to handle every changes in every input
-  const handleOnChange = useCallback(
+  const handleFormChange = useCallback(
     event => {
       setIsDirty(true)
 
@@ -66,7 +66,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
     [validationSchema]
   )
 
-  const handleOnSubmit = useCallback(
+  const handleFormSubmit = useCallback(
     event => {
       event.preventDefault()
 
@@ -79,7 +79,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
     [state]
   )
 
-  return { state, disable, handleOnChange, handleOnSubmit }
+  return { state, disable, handleFormChange, handleFormSubmit }
 }
 
 export default useForm
