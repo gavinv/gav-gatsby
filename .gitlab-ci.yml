@@ -28,21 +28,14 @@ default:
         export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE}
         export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_TAG}
       fi
-    - npm install
+    - yarn install
 
 test:
   stage: test
   image: cypress/base:10
   script:
     # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run test
-  artifacts:
-    when: always
-    paths:
-      - cypress/videos/**/*.mp4
-      - cypress/screenshots/**/*.png
-      - .cache
-    expire_in: 7 days
+    - yarn test
   only:
     refs:
       - merge_requests
@@ -55,9 +48,6 @@ deploy_staging:
   environment:
     name: staging
     url: https://stage.gavinvaught.com
-  artifacts:
-    paths:
-      - .cache
   only:
     - staging
 
@@ -68,10 +58,7 @@ deploy_prod:
   environment:
     name: production
     url: https://gavinvaught.com
-  artifacts:
-    paths:
-      - .cache
   only:
     - production
   after_script:
-    - curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c?trigger_branch=production&trigger_title=GitLab+CI+hook
+    - curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c
