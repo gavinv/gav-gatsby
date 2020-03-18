@@ -13,7 +13,7 @@ const FooterInner = styled.div`
   width: 100%;
   max-width: 100vw;
   grid-template-columns: repeat(4, 1fr);
-  grid-column: 8 / 9;
+  grid-column: 8 / span 1;
   grid-gap: 2rem;
   align-items: center;
   justify-items: center;
@@ -26,6 +26,10 @@ const FooterInner = styled.div`
   }
   @media screen and (max-width: 640px) {
     left: 4vw;
+  }
+  &&svg {
+    width: 1em;
+    height: 1em;
   }
 `
 
