@@ -129,7 +129,7 @@ function ContactForm() {
     window.location.pathname = '/'
   }
 
-  const { state, handleFormChange, handleFormSubmit, disable } = useForm(
+  const { state, handleInputChange, handleFormSubmit, disable } = useForm(
     stateSchema,
     validationStateSchema,
     onSubmission
@@ -155,7 +155,7 @@ function ContactForm() {
         <label htmlFor='firstname'>
           First name
           <TextField
-            onChange={handleFormChange}
+            onChange={handleInputChange}
             type='text'
             name='firstname'
             className='input--text'
@@ -167,7 +167,7 @@ function ContactForm() {
         <label htmlFor='lastname'>
           Last name
           <TextField
-            onChange={handleFormChange}
+            onChange={handleInputChange}
             type='text'
             name='lastname'
             className='input--text'
@@ -179,7 +179,7 @@ function ContactForm() {
         <label htmlFor='email'>
           Email
           <TextField
-            onChange={handleFormChange}
+            onChange={handleInputChange}
             type='email'
             name='email'
             className='input--email'
@@ -189,7 +189,7 @@ function ContactForm() {
         <label htmlFor='phone'>
           Phone
           <TextField
-            onChange={handleFormChange}
+            onChange={handleInputChange}
             type='phone'
             name='phone'
             className='input--phone'
@@ -199,7 +199,7 @@ function ContactForm() {
         <label htmlFor='message'>
           Message
           <textarea
-            onChange={handleFormChange}
+            onChange={handleInputChange}
             rows='5'
             name='message'
             className='input--textarea'
