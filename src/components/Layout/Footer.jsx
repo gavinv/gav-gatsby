@@ -7,6 +7,7 @@ const Footer = props => {
     <>
       <footer className='footer blurred'>
         <SocialLinks />
+        { props.children }
       </footer>
     </>
   )
