@@ -1,14 +1,14 @@
 import React from "react"
-import { Router } from "@reach/router"
+// import { Router } from "@reach/router"
 // import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 import { Link } from "gatsby"
 
 import ErrorBoundary from '../components/ErrorBoundary'
 import SEO from './../components/SEO'
 
-const Home = ({ user }) => {
-  return <p>Hi, {user.name ? user.name : "friend"}!</p>
-}
+// const Home = ({ user }) => {
+  // return <p>Hi, {user.name ? user.name : "friend"}!</p>
+// }
 
 const Account = () => {
   // if (!isAuthenticated()) {
@@ -22,7 +22,7 @@ const Account = () => {
       <SEO title='account'/>
       <ErrorBoundary>
         <nav>
-          <Link to="/account/">Account home</Link>{" "}
+          <Link to="/account/">Account home</Link>
           {/* <a
             href="#logout"
             onClick={e => {
@@ -33,11 +33,11 @@ const Account = () => {
             Log Out
           </a> */}
         </nav>
-        <Router>
-          <Home path="/account/"
-          // user={user} 
-          />
-        </Router>
+        {/* <Router> */}
+          {/* <Home path="/account/" */}
+          {/* // user={user}  */}
+          {/* /> */}
+        {/* </Router> */}
       </ErrorBoundary>
     </>
   )
