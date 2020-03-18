@@ -4,6 +4,7 @@ import Theme from './../../styles/theme'
 import MainNav from './MainNav'
 import Blobs from './Blobs'
 import Footer from './Footer'
+import SocialLinks from './../SocialLinks'
 
 export default function Layout(props, location) {
   return (
@@ -12,7 +13,9 @@ export default function Layout(props, location) {
       <Blobs />
       <MainNav />
           <main className='main-content'>{props.children}</main>
-      <Footer />
+      <Footer>
+        <SocialLinks />
+      </Footer>
     </>
   )
 }

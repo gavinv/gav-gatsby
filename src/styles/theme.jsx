@@ -12,20 +12,19 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--dark);
     color: var(--coral);
-    height: auto;
     width: 100%;
+    height: auto;
+    max-width: 100vw;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   * {
     font-family: 'Recursive', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  #root {
-    max-width: 1600px;
-    margin: 0 auto;
   }
   .main-content {
     max-width: 88vw;

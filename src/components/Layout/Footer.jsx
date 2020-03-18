@@ -1,14 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import SocialLinks from './../SocialLinks'
+const FooterElem = styled.footer`
+  
+`
 
 const Footer = props => {
   return (
     <>
-      <footer className='footer blurred'>
-        <SocialLinks />
+      <FooterElem className='footer blurred' {...props}>
         { props.children }
-      </footer>
+      </FooterElem>
     </>
   )
 }

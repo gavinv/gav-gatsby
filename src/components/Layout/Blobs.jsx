@@ -31,6 +31,7 @@ const floatInverse = keyframes`
 
 const Wrapper = styled.div`
   width: auto;
+  max-width: 100vw;
   max-height: 100vh;
   z-index: -1;
   position: absolute;
