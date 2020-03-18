@@ -43,6 +43,10 @@ test:
       - cypress/screenshots/**/*.png
       - .cache
     expire_in: 7 days
+  only:
+    refs:
+      - merge_requests
+      - /^gatsby-.*$/g
 
 deploy_staging:
   stage: deploy
