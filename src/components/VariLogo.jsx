@@ -8,8 +8,8 @@ const Collapsed = () => {
       height='494'
       viewBox='0 0 377.477 494'
       style={{
-        'max-height': '4em',
-        'max-width': '4em',
+        'maxHeight': '4em',
+        'maxWidth': '4em',
         'transform': 'translate(-2em, -0.8em',
       }}
     >

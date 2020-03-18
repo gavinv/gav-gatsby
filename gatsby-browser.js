@@ -1,5 +1,5 @@
-import React from "react"
-import { silentAuth } from "./src/utils/auth"
+// import React from "react"
+// import { silentAuth } from "./src/utils/auth"
 export const onInitialClientRender = () => {
   var animation = false,
     animationstring = 'anim',
@@ -42,31 +42,31 @@ export const onInitialClientRender = () => {
   }
 }
 
-class SessionCheck extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
-  }
+// class SessionCheck extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//       loading: true,
+//     }
+//   }
 
-  handleCheckSession = () => {
-    this.setState({ loading: false })
-  }
+//   handleCheckSession = () => {
+//     this.setState({ loading: false })
+//   }
 
-  componentDidMount() {
-    silentAuth(this.handleCheckSession)
-  }
+//   componentDidMount() {
+//     silentAuth(this.handleCheckSession)
+//   }
 
-  render() {
-    return (
-      this.state.loading === false && (
-        <>{this.props.children}</>
-      )
-    )
-  }
-}
+//   render() {
+//     return (
+//       this.state.loading === false && (
+//         <>{this.props.children}</>
+//       )
+//     )
+//   }
+// }
 
-export const wrapRootElement = ({ element }) => {
-  return <SessionCheck>{element}</SessionCheck>
-}
+// export const wrapRootElement = ({ element }) => {
+//   return <SessionCheck>{element}</SessionCheck>
+// }
