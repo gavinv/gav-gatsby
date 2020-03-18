@@ -173,6 +173,7 @@ class Contact extends React.Component {
                     First name
                     <TextField
                       onChange={e => this.handleChange(e)}
+                      value={this.state.values.firstname}
                       type='text'
                       name='firstname'
                       className='input--text'
@@ -182,6 +183,7 @@ class Contact extends React.Component {
                     Last name
                     <TextField
                       onChange={e => this.handleChange(e)}
+                      value={this.state.values.lastname}
                       type='text'
                       name='lastname'
                       className='input--text'
@@ -191,6 +193,7 @@ class Contact extends React.Component {
                     Email
                     <TextField
                       onChange={e => this.handleChange(e)}
+                      value={this.state.values.email}
                       type='email'
                       name='email'
                       className='input--email'
@@ -200,6 +203,7 @@ class Contact extends React.Component {
                     Phone
                     <TextField
                       onChange={e => this.handleChange(e)}
+                      value={this.state.values.phone}
                       type='phone'
                       name='phone'
                       className='input--phone'
@@ -209,6 +213,7 @@ class Contact extends React.Component {
                     Message
                     <textarea
                       onChange={e => this.handleChange(e)}
+                      value={this.state.values.message}
                       rows='5'
                       name='message'
                       className='input--textarea'
