@@ -5,7 +5,7 @@
 }
 :root {
   --mono: "MONO" 0;
-  --casl: "CASL" .32;
+  --casl: "CASL" 0;
   --wght: "wght" 256;
   --slnt: "slnt" 0;
   --ital: "ital" 0.5;

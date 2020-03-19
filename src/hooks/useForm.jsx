@@ -18,8 +18,8 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   const validateState = useCallback(() => {
     const hasErrorInState = Object.keys(validationSchema).some(key => {
       const isInputFieldRequired = validationSchema[key].required
-      const stateValue = state[key].value // state value
-      const stateError = state[key].error // state error
+      const stateValue = state[key].value 
+      const stateError = state[key].error 
 
       return (isInputFieldRequired && !stateValue) || stateError
     })
@@ -61,9 +61,6 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   const handleFormSubmit = useCallback(
     event => {
       event.preventDefault()
-
-      // Make sure that validateState returns false
-      // Before calling the submit callback function
       if (!validateState()) {
         callback(state)
       }
@@ -71,7 +68,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
     [state]
   )
 
-  return { state, disable, handleFormChange, handleFormSubmit }
+  return { state, disable, handleInputChange, handleFormSubmit }
 }
 
 export default useForm

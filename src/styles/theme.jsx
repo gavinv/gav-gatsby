@@ -105,7 +105,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .blurred {
     display: flex;
-    background-color: #63636333;
+    background-color: hsla(0, 0%, 16%, 0.56);
     border-radius: 24px 8px 24px 8px;
     justify-content: space-between;
     backdrop-filter: blur(8px) brightness(80%);

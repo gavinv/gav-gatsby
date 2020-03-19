@@ -2,22 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-const BaseTextField = styled.input`
+const BaseLabel = styled.label`
+  position: absolute;
+  transform: translate(16px, 8px) scale(1);
+  margin: 0.8rem auto;
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  &[data-shrink='true'] {
+    transform: translate(16px, -8px) scale(0.64);
+    transform-origin: top left;
+  }
+`
+
+const BaseInputField = styled.input`
+  display: inline-grid;
+  position: relative;
+  width: 100%;
+  margin-top: 0.32rem;
+  align-items: center;
   font-family: ${props =>
     props.monospace
       ? 'var(--font-family-monospace)'
       : 'var(--font-family-sans-serif)'};
+  font-size: ${props => props.fontSize || '1rem'};
   color: ${props => props.fg || 'var(--coral)'};
-  font-size: ${props => props.fontSize || 'var(--base-fontsize)'};
-  line-height: 1.1875em;
-  position: relative;
   cursor: text;
-  display: inline-grid;
-  align-items: center;
+  border: none;
+  border-bottom: 1px double var(--coral);
+  :-internal-autofill-selected {
+    background-color: var(--beige) !important;
+  }
+  ${props =>
+    props.filled &&
+    css`
+      padding: 16px 8px 8px 16px;
+      background-color: #73626332;
+      border-radius: 8px 8px 0 0;
+    `}
   ${props =>
     props.disabled &&
     css`
       color: var(--beige);
+      border: 1px dotted var(--beige);
       cursor: default;
     `}
   ${props =>
@@ -35,29 +61,26 @@ const BaseTextField = styled.input`
     css`
       width: 100%;
     `}
-
 `
+
 class TextField extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dirty: null,
       focus: null,
-      valid: null,
     }
   }
 
-  handleFocus = e => {
-    this.setState({
-      focus: true,
-    })
+  handleFocus = (e, { ...props }) => {
+    props.diabled
+      ? e.stopPropogation()
+      : this.setState({
+          focus: true
+        })
   }
 
   handleChange = e => {
     this.props.onChange(e.target.value)
-    this.setState({
-      dirty: true,
-    })
   }
 
   handleBlur = e => {
@@ -66,30 +89,25 @@ class TextField extends React.Component {
     }))
   }
 
-  checkValidity(e) {
-    // This is a VERY basic implementation of validation. Will need to beef it up in later iterations.
-    let value = e.target.value
-    let bool = null
-    if (typeof value !== String && value.length > 0) {
-      bool = true
-    } else {
-      bool = false
-    }
-
-    this.setState({
-      valid: bool,
-    })
-  }
-
   render() {
     return (
-      <BaseTextField
-        onFocus={this.handleFocus}
-        onChange={this.handleChange}
-        onBlur={this.handleBlur}
-        valid={e => this.checkValidity(e)}
-        {...this.props}
-      />
+      <>
+        <BaseLabel
+          data-shrink={this.state.focus || this.state.dirty}
+          className='gavInputLabel-root'
+          htmlFor={this.props.name}
+        >
+          {this.props.label}
+        </BaseLabel>
+        <BaseInputField
+          className='gavInputBase-root gavInput-root'
+          onFocus={this.handleFocus}
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+          name={this.props.label}
+          {...this.props}
+        />
+      </>
     )
   }
 }

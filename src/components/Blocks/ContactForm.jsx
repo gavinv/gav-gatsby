@@ -21,15 +21,19 @@ const Cancel = styled(Button)`
     font-weight: 564;
   }
 `
-
+const BaseFormControl = styled.div`
+  line-height: 1.1875em;
+  font-size: 1rem;
+  &.gavTextArea-root {
+    width: 100%;
+    grid-area: m;
+  }
+`
 const FormElem = styled.form`
   display: grid;
   grid-template: 'f l' 1fr 'e p' 1fr 'm m' 2fr 'r s' 0.5fr / 1fr 1fr;
   grid-column-gap: 1.6rem;
   label {
-    font-size: 12px;
-    margin: 0.8rem auto;
-    width: 100%;
     &[for='firstname'] {
       grid-area: f;
     }
@@ -42,33 +46,20 @@ const FormElem = styled.form`
     &[for='phone'] {
       grid-area: p;
     }
-    &[for='message'] {
-      grid-area: m;
-    }
   }
   .reset {
     grid-area: r;
   }
-  input:-internal-autofill-selected {
-    background-color: var(--beige) !important;
-  }
-  input,
   textarea {
     font-size: 16px;
     color: var(--coral);
-    background-color: transparent;
+    background-color: #73626332;
     border: 1px solid var(--coral);
     display: grid;
     padding: 0.8rem;
     margin-top: 0.32rem;
+    margin-bottom: 1em;
     width: 100%;
-  }
-  input {
-    border: none;
-    border-bottom: 1px solid var(--coral);
-    border-radius: none;
-  }
-  textarea {
     border-radius: 16px 16px 4px 16px;
   }
 `
@@ -114,7 +105,7 @@ function ContactForm() {
     message: {
       required: true,
       validator: {
-        regEx: /^[A-Za-z0-9 .'?!,@$#-_]+$/,
+        regEx: /^[A-Za-z0-9 .'?!,@$#-_]*$/,
         error: 'Invalid message format.',
       },
     },
@@ -152,60 +143,66 @@ function ContactForm() {
         onSubmit={handleFormSubmit}
       >
         <input type='hidden' name='form-name' value='contact' />
-        <label htmlFor='firstname'>
-          First name
+        <BaseFormControl className='gavFormControl-root gavTextField-root'>
           <TextField
             onChange={handleInputChange}
             type='text'
             name='firstname'
-            className='input--text'
+    className={state.isDirty}
+            label='First name'
+            filled
           />
-        </label>
-        {state.firstname.error && (
-          <p style={errorStyle}>{state.firstname.error}</p>
-        )}
-        <label htmlFor='lastname'>
-          Last name
+          {state.firstname.error && (
+            <p style={errorStyle}>{state.firstname.error}</p>
+          )}
+        </BaseFormControl>
+        <BaseFormControl className='gavFormControl-root gavTextField-root'>
           <TextField
             onChange={handleInputChange}
             type='text'
             name='lastname'
-            className='input--text'
+              className={state.isDirty}
+            label='Last name'
+            filled
           />
-        </label>
-        {state.lastname.error && (
-          <p style={errorStyle}>{state.lastname.error}</p>
-        )}
-        <label htmlFor='email'>
-          Email
+          {state.lastname.error && (
+            <p style={errorStyle}>{state.lastname.error}</p>
+          )}
+        </BaseFormControl>
+        <BaseFormControl className='gavFormControl-root gavTextField-root'>
           <TextField
             onChange={handleInputChange}
             type='email'
             name='email'
-            className='input--email'
+            className={state.isDirty}
+            label='Email'
+            filled
           />
-        </label>
-        {state.email.error && <p style={errorStyle}>{state.email.error}</p>}
-        <label htmlFor='phone'>
-          Phone
+          {state.email.error && <p style={errorStyle}>{state.email.error}</p>}
+        </BaseFormControl>
+        <BaseFormControl className='gavFormControl-root gavTextField-root'>
           <TextField
             onChange={handleInputChange}
             type='phone'
             name='phone'
-            className='input--phone'
+            className={state.isDirty}
+            label='Phone number'
+            filled
           />
-        </label>
-        {state.phone.error && <p style={errorStyle}>{state.phone.error}</p>}
-        <label htmlFor='message'>
-          Message
+          {state.phone.error && <p style={errorStyle}>{state.phone.error}</p>}
+        </BaseFormControl>
+        <BaseFormControl className='gavFormControl-root gavTextArea-root'>
+          <label htmlFor='message'>Message</label>
           <textarea
             onChange={handleInputChange}
             rows='5'
             name='message'
             className='input--textarea'
           />
-        </label>
-        {state.message.error && <p style={errorStyle}>{state.message.error}</p>}
+          {state.message.error && (
+            <p style={errorStyle}>{state.message.error}</p>
+          )}
+        </BaseFormControl>
         <Button className='reset' type='reset' height='3.2rem' label='Reset' />
         <ButtonWrapper>
           <Cancel
