@@ -6,11 +6,12 @@ const BaseLabel = styled.label`
   position: absolute;
   transform: translate(16px, 8px) scale(1);
   margin: 0.8rem auto;
-  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+  transition: color 256ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   &[data-shrink='true'] {
     transform: translate(16px, -8px) scale(0.64);
     transform-origin: top left;
+    color: var(--teal);
   }
 `
 
@@ -29,6 +30,10 @@ const BaseInputField = styled.input`
   cursor: text;
   border: none;
   border-bottom: 1px double var(--coral);
+  transition: border-bottom-color 256ms cubic-bezier(.64,.24,.32,.72) 0ms;
+  :focus {
+    border-bottom-color: var(--teal);
+  }
   :-internal-autofill-selected {
     background-color: var(--beige) !important;
   }
@@ -95,7 +100,7 @@ class TextField extends React.Component {
         <BaseLabel
           data-shrink={this.state.focus || this.state.dirty}
           className='gavInputLabel-root'
-          htmlFor={this.props.name}
+          htmlFor={this.props.id}
         >
           {this.props.label}
         </BaseLabel>
@@ -104,7 +109,8 @@ class TextField extends React.Component {
           onFocus={this.handleFocus}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
-          name={this.props.label}
+          aria-label={this.props.label}
+          name={this.props.name}
           {...this.props}
         />
       </>

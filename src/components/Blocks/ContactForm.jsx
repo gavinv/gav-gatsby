@@ -21,15 +21,10 @@ const Cancel = styled(Button)`
     font-weight: 564;
   }
 `
-const BaseFormControl = styled.div`
+const BaseFieldset = styled.fieldset`
   line-height: 1.1875em;
   font-size: 1rem;
-  &.gavTextArea-root {
-    width: 100%;
-    grid-area: m;
-  }
-`
-const FormElem = styled.form`
+  border: none;
   display: grid;
   grid-template: 'f l' 1fr 'e p' 1fr 'm m' 2fr 'r s' 0.5fr / 1fr 1fr;
   grid-column-gap: 1.6rem;
@@ -47,6 +42,16 @@ const FormElem = styled.form`
       grid-area: p;
     }
   }
+`
+const BaseFormControl = styled.div`
+  line-height: 1.1875em;
+  font-size: 1rem;
+  &.gavTextArea-root {
+    width: 100%;
+    grid-area: m;
+  }
+`
+const FormElem = styled.form`
   .reset {
     grid-area: r;
   }
@@ -64,7 +69,7 @@ const FormElem = styled.form`
   }
 `
 
-function ContactForm() {
+function ContactForm(props) {
   const stateSchema = {
     firstname: { value: '', error: '' },
     lastname: { value: '', error: '' },
@@ -134,92 +139,115 @@ function ContactForm() {
   return (
     <>
       <FormElem
-        className='contact-form'
+        className='gavBaseForm-contact'
         name='contact'
+        id='contact-form'
+        aria-label='Contact form'
+        role='form'
         method='post'
         action='/success'
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         onSubmit={handleFormSubmit}
       >
-        <input type='hidden' name='form-name' value='contact' />
-        <BaseFormControl className='gavFormControl-root gavTextField-root'>
-          <TextField
-            onChange={handleInputChange}
-            type='text'
-            name='firstname'
-    className={state.isDirty}
-            label='First name'
-            filled
-          />
-          {state.firstname.error && (
-            <p style={errorStyle}>{state.firstname.error}</p>
-          )}
-        </BaseFormControl>
-        <BaseFormControl className='gavFormControl-root gavTextField-root'>
-          <TextField
-            onChange={handleInputChange}
-            type='text'
-            name='lastname'
+        <BaseFieldset  form='contact-form' aria-label='Contact form'>
+          <legend form='contact-form' aria-label={props.legend}>{props.legend}</legend>
+          <input type='hidden' name='name' label='name' />
+          <BaseFormControl
+            className='gavFormControl-root gavTextField-root'
+            aria-label='Text input'
+          >
+            <TextField
+              onChange={handleInputChange}
+              type='text'
+              id='firstname'
+              name='firstname'
               className={state.isDirty}
-            label='Last name'
-            filled
-          />
-          {state.lastname.error && (
-            <p style={errorStyle}>{state.lastname.error}</p>
-          )}
-        </BaseFormControl>
-        <BaseFormControl className='gavFormControl-root gavTextField-root'>
-          <TextField
-            onChange={handleInputChange}
-            type='email'
-            name='email'
-            className={state.isDirty}
-            label='Email'
-            filled
-          />
-          {state.email.error && <p style={errorStyle}>{state.email.error}</p>}
-        </BaseFormControl>
-        <BaseFormControl className='gavFormControl-root gavTextField-root'>
-          <TextField
-            onChange={handleInputChange}
-            type='phone'
-            name='phone'
-            className={state.isDirty}
-            label='Phone number'
-            filled
-          />
-          {state.phone.error && <p style={errorStyle}>{state.phone.error}</p>}
-        </BaseFormControl>
-        <BaseFormControl className='gavFormControl-root gavTextArea-root'>
-          <label htmlFor='message'>Message</label>
-          <textarea
-            onChange={handleInputChange}
-            rows='5'
-            name='message'
-            className='input--textarea'
-          />
-          {state.message.error && (
-            <p style={errorStyle}>{state.message.error}</p>
-          )}
-        </BaseFormControl>
-        <Button className='reset' type='reset' height='3.2rem' label='Reset' />
-        <ButtonWrapper>
-          <Cancel
-            className='cancel'
-            type='cancel'
-            label='&times;'
-            rad='24px 8px 24px 24px'
-            onClick={e => cancelSubmission(e)}
-          />
+              label='First name'
+              filled
+            />
+            {state.firstname.error && (
+              <p style={errorStyle}>{state.firstname.error}</p>
+            )}
+          </BaseFormControl>
+          <BaseFormControl className='gavFormControl-root gavTextField-root'>
+            <TextField
+              onChange={handleInputChange}
+              type='text'
+              id='lastname'
+              name='lastname'
+              className={state.isDirty}
+              label='Last name'
+              filled
+            />
+            {state.lastname.error && (
+              <p style={errorStyle}>{state.lastname.error}</p>
+            )}
+          </BaseFormControl>
+          <BaseFormControl className='gavFormControl-root gavTextField-root'>
+            <TextField
+              onChange={handleInputChange}
+              type='email'
+              id='email'
+              name='email'
+              className={state.isDirty}
+              label='Email'
+              filled
+            />
+            {state.email.error && <p style={errorStyle}>{state.email.error}</p>}
+          </BaseFormControl>
+          <BaseFormControl className='gavFormControl-root gavTextField-root'>
+            <TextField
+              onChange={handleInputChange}
+              type='phone'
+              id='phone'
+              name='phone'
+              className={state.isDirty}
+              label='Phone number'
+              filled
+            />
+            {state.phone.error && <p style={errorStyle}>{state.phone.error}</p>}
+          </BaseFormControl>
+          <BaseFormControl className='gavFormControl-root gavTextArea-root'>
+            <label htmlFor='message'>Message</label>
+            <textarea
+              onChange={handleInputChange}
+              rows='5'
+              type='text'
+              id='message'
+              name='message'
+              className='input--textarea'
+            />
+            {state.message.error && (
+              <p style={errorStyle}>{state.message.error}</p>
+            )}
+          </BaseFormControl>
           <Button
-            htmlFor='contact'
-            className='submit'
-            type='submit'
-            label='Submit'
-            disabled={disable}
+            className='reset'
+            type='reset'
+            aria-label='Reset form'
+            height='3.2rem'
+            label='Reset'
           />
-        </ButtonWrapper>
+          <ButtonWrapper>
+            <Cancel
+              className='gavBaseButton-cancel'
+              type='cancel'
+              aria-label='Cancel form submission'
+              label='&times;'
+              rad='24px 8px 24px 24px'
+              onClick={e => cancelSubmission(e)}
+            />
+            <Button
+              htmlFor='contact'
+              className='gavBaseButton-submit'
+              aria-label='Submit form'
+              type='submit'
+              label='Submit'
+              disabled={disable}
+            />
+          </ButtonWrapper>
+        </BaseFieldset>
       </FormElem>
     </>
   )

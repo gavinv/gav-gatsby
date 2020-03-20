@@ -45,8 +45,7 @@ export default function Contact() {
                   </a>
                 </span>
               </div>
-              <p>...or drop me a message from right here:</p>
-              <ContactForm />
+              <ContactForm legend='...or drop me a message from right here:'/>
             </FormPanel>
           </section>
         </Layout>
