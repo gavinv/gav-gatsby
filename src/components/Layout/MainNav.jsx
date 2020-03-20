@@ -23,8 +23,8 @@ const MainNav = props => {
   const viewport = useWindowSize()
   return (
     <>
-      <Nav className='mainnavigation blurred'>
-        <Link to='/' className='gav-expanded-container'>
+      <Nav className='mainnavigation blurred' role='navigation'>
+        <Link to='/' className='gav-expanded-container' aria-label='Home page'>
           <VariLogo viewport={viewport.width} />
         </Link>
         <Wrapper className='pages'>

@@ -74,7 +74,8 @@ const IndexPage = () => {
         <Layout>
           <section className='grid col-2'>
             <div className='homepage-content'>
-              <h1 className='heading'>Gavin Vaught</h1>
+              <h1 className='gavBaseHero-overline'>Hello, world!  I'm</h1>
+              <h2 className='gavBaseHero-heading'>Gavin Vaught</h2>
               <div className='content sub-heading'>
                 <span>web developer</span>
                 <span className='corner-ampersand'>&</span>
@@ -90,6 +91,8 @@ const IndexPage = () => {
               width='377.477'
               height='494'
               viewBox='0 0 377.477 494'
+              aria-label='GAV logo'
+              role='svg'
             >
               <g transform='translate(8.728 6.5)'>
                 <g transform='translate(0 -0.166)'>

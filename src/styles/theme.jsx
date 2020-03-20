@@ -51,11 +51,17 @@ export const GlobalStyle = createGlobalStyle`
     padding: 2rem;
   }
 
-  h1.heading {
-    font-family: 'Lato Black', sans-serif;
-    font-weight: 900;
-    font-size: 4.5rem;
-    letter-spacing: -3.2px;
+  h1.gavBaseHero-overline {
+    font-variation-settings: 
+      "MONO" 1, "CASL" 0, "wght" 320 , var(--slnt), "ital" 0;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+  }
+  h2.gavBaseHero-heading {
+    font-variation-settings: 
+      var(--mono),"CASL" 1,"wght" 640,var(--slnt), "ital" 1;
+    font-size: 4rem;
+    letter-spacing: 0.4px;
   }
   .sub-heading {
     font-size: 2rem;
