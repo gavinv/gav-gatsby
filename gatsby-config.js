@@ -1,7 +1,3 @@
-var fs = require('fs')
-var path = require('path')
-var glob = require('glob')
-
 module.exports = {
   siteMetadata: {
     title: `Gavin Vaught | Web Developer & Designer`,
@@ -13,6 +9,27 @@ module.exports = {
   },
   pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */,
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-139960866-1',
+        head: 'true',
+        anonymize: true,
+        respectDNT: true,
+        exclude: ["/contact/success/**", "/account"],
+        pageTransitionDelay: 0,
+        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+        // Set Variation ID. 0 for original 1,2,3....
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+        // Any additional optional fields
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: "gavinvaught.com",
+        forceSSL: true,
+        
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -45,12 +62,6 @@ module.exports = {
         background_color: `#121212`,
         theme_color: `#fac9ce`,
         display: `minimal-ui`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-139960866-1',
       },
     },
     `gatsby-plugin-react-helmet`,

@@ -9,7 +9,7 @@ import Container from './../../components/Layout/Container'
 function autoRedirect() {
   setTimeout(function() {
     window.location.href = '/'
-  }, 8000)
+  }, 5640)
 }
 
 export default function Success() {

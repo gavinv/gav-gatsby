@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 import Button from './../Inputs/Button'
 import TextField from './../Inputs/TextField'
@@ -117,7 +118,13 @@ function ContactForm(props) {
   }
 
   const onSubmit = event => {
+    trackCustomEvent({
+      category: "contact form submission",
+      action: "click",
+      label: "Contact Form Campaign"
+    })
     window.location.pathname = '/contact/success'
+    
     return event
   }
 
@@ -242,6 +249,7 @@ function ContactForm(props) {
               type='submit'
               label='Submit'
               disabled={disable}
+              onClick={onSubmit}
             />
           </ButtonWrapper>
         </BaseFieldset>

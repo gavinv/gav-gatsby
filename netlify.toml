@@ -11,7 +11,7 @@ publish = "./public/"
 # Default build command.
 command = "yarn build --prefix-paths"
 # Directory with the serverless Lambda functions to deploy to AWS.
-functions = "./netlify-functions/"
+functions = "./functions/"
 
 # Production context: all deploys from the Production branch set in site's
 # deploy contexts will inherit these settings.
