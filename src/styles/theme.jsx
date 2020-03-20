@@ -198,7 +198,7 @@ export const GlobalStyle = createGlobalStyle`
   h1,
   h2,
   h3 {
-    margin: 1rem;
+    margin: 1rem 0;
   }
   p {
     margin-bottom: 1rem;

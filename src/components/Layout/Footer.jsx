@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import useWindowSize from './../../hooks/useWindowSize'
+
 const FooterElem = styled.footer`
   display: grid;
   grid-template-columns: repeat(8, auto);
@@ -34,15 +36,17 @@ const FooterInner = styled.div`
 `
 
 const Footer = props => {
-  return (
-    <>
-      <FooterElem {...props}>
-        <FooterInner className="blurred">
-          { props.children }
-        </FooterInner>
-      </FooterElem>
-    </>
-  )
+  const viewport = useWindowSize()
+  if (viewport.width >= 640)
+    return (
+      <>
+        <FooterElem {...props}>
+          <FooterInner className='blurred'>{props.children}</FooterInner>
+        </FooterElem>
+      </>
+    )
+  else
+    return null
 }
 
 export default Footer

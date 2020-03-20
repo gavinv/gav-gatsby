@@ -116,8 +116,9 @@ function ContactForm(props) {
     },
   }
 
-  function onSubmission(state) {
-    window.location.pathname = '/success'
+  const onSubmit = event => {
+    window.location.pathname = '/contact/success'
+    return event
   }
 
   function cancelSubmission(e) {
@@ -128,7 +129,7 @@ function ContactForm(props) {
   const { state, handleInputChange, handleFormSubmit, disable } = useForm(
     stateSchema,
     validationStateSchema,
-    onSubmission
+    onSubmit
   )
 
   const errorStyle = {
@@ -145,7 +146,7 @@ function ContactForm(props) {
         aria-label='Contact form'
         role='form'
         method='post'
-        action='/success'
+        action='/contact/success'
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         onSubmit={handleFormSubmit}

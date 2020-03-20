@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ErrorBoundary from './../components/ErrorBoundary'
-import Layout from './../components/Layout/Layout'
-import SEO from './../components/SEO'
-import ContactForm from './../components/Blocks/ContactForm'
+import ErrorBoundary from './../../components/ErrorBoundary'
+import Layout from './../../components/Layout/Layout'
+import SEO from './../../components/SEO'
+import ContactForm from './../../components/Blocks/ContactForm'
 
 const FormPanel = styled.div`
   max-width: 80vw;
