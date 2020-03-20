@@ -68,6 +68,32 @@ const BaseInputField = styled.input`
     `}
 `
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+// Pretty basic implementation right now.
+// I'll refactor it to be more dynamic later... maybe)
+function getRandomLatinStr(uppercase = false, len = 5) {
+  // lowercase by default
+  let result = ''
+  let int = uppercase
+    ? getRandomIntInclusive(65, 90)
+    : getRandomIntInclusive(97, 122)
+  let hex = int.toString(16)
+  let codePoint = '0x00' + hex
+
+  result += String.fromCodePoint(codePoint)
+
+  if (result.length < len) {
+    len = len - result.length
+    result += getRandomLatinStr(Math.random() > 0.5, len)
+  }
+
+  return result
+}
+
 class TextField extends React.Component {
   constructor(props) {
     super(props)
@@ -80,7 +106,7 @@ class TextField extends React.Component {
     props.diabled
       ? e.stopPropogation()
       : this.setState({
-          focus: true
+          focus: true,
         })
   }
 
@@ -95,12 +121,16 @@ class TextField extends React.Component {
   }
 
   render() {
+    let str = getRandomLatinStr()
+    let inputId = this.props.id ? this.props.id : 'gav-' + str
+
     return (
       <>
         <BaseLabel
+          role='label'
           data-shrink={this.state.focus || this.state.dirty}
           className='gavInputLabel-root'
-          htmlFor={this.props.id}
+          htmlFor={inputId}
         >
           {this.props.label}
         </BaseLabel>
@@ -111,6 +141,7 @@ class TextField extends React.Component {
           onBlur={this.handleBlur}
           aria-label={this.props.label}
           name={this.props.name}
+          id={inputId}
           {...this.props}
         />
       </>
@@ -119,6 +150,7 @@ class TextField extends React.Component {
 }
 
 TextField.propTypes = {
+  name: PropTypes.string,
   multiline: PropTypes.bool,
   fullWidth: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -126,6 +158,7 @@ TextField.propTypes = {
 }
 
 TextField.defaultProps = {
+  name: 'Base Input',
   multiline: false,
   fullWidth: false,
   disabled: false,

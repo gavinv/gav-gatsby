@@ -161,7 +161,6 @@ function ContactForm(props) {
             <TextField
               onChange={handleInputChange}
               type='text'
-              id='firstname'
               name='firstname'
               className={state.isDirty}
               label='First name'
@@ -175,7 +174,6 @@ function ContactForm(props) {
             <TextField
               onChange={handleInputChange}
               type='text'
-              id='lastname'
               name='lastname'
               className={state.isDirty}
               label='Last name'
@@ -189,7 +187,6 @@ function ContactForm(props) {
             <TextField
               onChange={handleInputChange}
               type='email'
-              id='email'
               name='email'
               className={state.isDirty}
               label='Email'
@@ -201,7 +198,6 @@ function ContactForm(props) {
             <TextField
               onChange={handleInputChange}
               type='phone'
-              id='phone'
               name='phone'
               className={state.isDirty}
               label='Phone number'
