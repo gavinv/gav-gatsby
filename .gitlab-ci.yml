@@ -29,7 +29,7 @@ default:
         export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE}
         export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_TAG}
       fi
-    - yarn install --check-files --preferred-cache-folder=$YARN_CACHE_FOLDER
+    # - yarn install --check-files --preferred-cache-folder=$YARN_CACHE_FOLDER
 
 test:
   stage: test
@@ -57,11 +57,12 @@ deploy_staging:
 deploy_prod:
   stage: deploy
   script:
-    - yarn build --prefix-paths
+    # - yarn build --prefix-paths
+    curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c
   environment:
     name: production
     url: https://gavinvaught.com
   only:
     - production
-  after_script:
-    - curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c
+  # after_script:
+  #   - curl -X POST -d {} https://api.netlify.com/build_hooks/5df85759cd781f69f161b56c

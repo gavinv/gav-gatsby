@@ -30,7 +30,7 @@ NODE_ENV = "development"
   bundle = true
   minify = true
 [build.processing.js]
-  bundle = true
+  bundle = false
   minify = true
 [build.processing.html]
   pretty_urls = true
