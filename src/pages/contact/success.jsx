@@ -21,15 +21,21 @@ export default function Success() {
         <Layout>
           <section className='main blurred'>
             <Container>
-            <h1>Success!</h1>
-            <p>Your message has been submitted, thanks! </p>
-            <p>I'll do my best to respond within 24 hours, if one is warranted. :)</p>
-            <br />
-            <p>
-              <small>If you are not redirected automatically, please click <Link to='/'>here</Link> to go back to homepage.</small>
-            </p>
+              <h1>Success!</h1>
+              <p>Your message has been submitted, thanks! </p>
+              <p>
+                I'll do my best to respond within 24 hours, if one is warranted.
+                :)
+              </p>
+              <br />
+              <p>
+                <small>
+                  If you are not redirected automatically, please click{' '}
+                  <Link to='/'>here</Link> to go back to homepage.
+                </small>
+              </p>
             </Container>
-            </section>
+          </section>
         </Layout>
       </ErrorBoundary>
     </>
