@@ -10,26 +10,6 @@ module.exports = {
   pathPrefix: `/gvaught/gav-gatsby` /* For gitlab-ci */,
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-139960866-1',
-        head: 'true',
-        anonymize: true,
-        respectDNT: true,
-        exclude: ["/contact/success/**", "/account"],
-        pageTransitionDelay: 0,
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: "gavinvaught.com",
-        forceSSL: true
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
-        // Set Variation ID. 0 for original 1,2,3....
-        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
-        // Any additional optional fields
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
@@ -41,6 +21,26 @@ module.exports = {
       options: {
         name: `fonts`,
         path: `${__dirname}/src/fonts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-139960866-1',
+        head: 'true',
+        anonymize: true,
+        respectDNT: true,
+        exclude: ['/contact/success/**', '/account'],
+        pageTransitionDelay: 0,
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: 'gavinvaught.com',
+        forceSSL: true,
+        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+        // Set Variation ID. 0 for original 1,2,3....
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+        // Any additional optional fields
       },
     },
     {

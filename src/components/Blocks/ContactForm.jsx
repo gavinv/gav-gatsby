@@ -51,6 +51,9 @@ const BaseFormControl = styled.div`
     width: 100%;
     grid-area: m;
   }
+  &.gavFormControl-hidden {
+    display: none;
+  }
 `
 const FormElem = styled.form`
   .reset {
@@ -119,12 +122,12 @@ function ContactForm(props) {
 
   const onSubmit = event => {
     trackCustomEvent({
-      category: "contact form submission",
-      action: "click",
-      label: "Contact Form Campaign"
+      category: 'contact form submission',
+      action: 'click',
+      label: 'Contact Form Campaign',
     })
     window.location.pathname = '/contact/success'
-    
+
     return event
   }
 
@@ -155,12 +158,20 @@ function ContactForm(props) {
         method='post'
         action='/contact/success'
         data-netlify='true'
-        data-netlify-honeypot='bot-field'
+        data-netlify-honeypot='name'
+        data-netlify-recaptcha='true'
         onSubmit={handleFormSubmit}
       >
-        <BaseFieldset  form='contact-form' aria-label='Contact form'>
-          <legend form='contact-form' aria-label={props.legend}>{props.legend}</legend>
-          <input type='hidden' name='name' label='name' />
+        <BaseFieldset form='contact-form' aria-label='Contact form'>
+          <legend form='contact-form' aria-label={props.legend}>
+            {props.legend}
+          </legend>
+          <BaseFormControl className='gavFormControl-hidden'>
+            <label htmlFor='name'>
+              Psst! Don't fill this input if you're a human...
+              <input id='name' name='name' label='name' />
+            </label>
+          </BaseFormControl>
           <BaseFormControl
             className='gavFormControl-root gavTextField-root'
             aria-label='Text input'
@@ -242,6 +253,7 @@ function ContactForm(props) {
               rad='24px 8px 24px 24px'
               onClick={e => cancelSubmission(e)}
             />
+            <div data-netlify-recaptcha='true'></div>
             <Button
               htmlFor='contact'
               className='gavBaseButton-submit'

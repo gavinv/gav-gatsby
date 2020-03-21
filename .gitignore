@@ -74,3 +74,5 @@ yarn-error.log
 */cypress/screenshots/
 
 .env.*
+# Local Netlify folder
+.netlify
