@@ -169,7 +169,7 @@ function ContactForm(props) {
           <BaseFormControl className='gavFormControl-hidden'>
             <label htmlFor='name'>
               Psst! Don't fill this input if you're a human...
-              <input id='name' name='name' label='name' />
+              <input type='text' id='name' name='name' label='name' />
             </label>
           </BaseFormControl>
           <BaseFormControl
@@ -260,7 +260,7 @@ function ContactForm(props) {
               aria-label='Submit form'
               type='submit'
               label='Submit'
-              disabled={disable}
+              isDisabled={disable}
               onClick={onSubmit}
             />
           </ButtonWrapper>
