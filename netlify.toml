@@ -1,4 +1,13 @@
 [build]
-  command = "yarn build"
-  functions = "functions"
-  publish = "public"
+command = "yarn build"
+functions = "functions"
+publish = "public"
+
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+[plugins.inputs]
+buildDir = "public"
+
+[[plugins]]
+package = "netlify-plugin-gatsby-cache"
