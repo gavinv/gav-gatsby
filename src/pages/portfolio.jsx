@@ -6,7 +6,7 @@ import ProjectBlock from './../components/Blocks/ProjectBlock'
 import StyledContent from './../components/Blocks/StyledContent'
 import StyledImgContainer from './../components/Blocks/StyledImgContainer'
 import SEO from './../components/SEO'
-import Image from './../components/Image/Image'
+import Image from './../components/Image'
 
 export default function Portfolio() {
   return (
