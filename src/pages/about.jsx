@@ -23,14 +23,14 @@ export default function About() {
   const pdfAndImage = useStaticQuery(
     graphql`
       {
-        ImageQuery: file(relativePath: { eq: "gav-resume-2019-plain.jpg" }) {
+        ImageQuery: file(relativePath: { eq: "gav-resume-2020-03-01.jpg" }) {
           childImageSharp {
             fluid(quality: 80) {
               ...GatsbyImageSharpFluid
             }
           }
         }
-        PdfQuery: file(relativePath: { eq: "gav-resume-2019-plain.pdf" }) {
+        PdfQuery: file(relativePath: { eq: "gav-resume-2020-03-01.pdf" }) {
           publicURL
           uid
         }

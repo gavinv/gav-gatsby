@@ -18,15 +18,14 @@ const BaseLabel = styled.label`
 const BaseInputField = styled.input`
   display: inline-grid;
   position: relative;
-  width: 100%;
   margin-top: 0.32rem;
   align-items: center;
-  font-family: ${props =>
+  font-family: ${(props) =>
     props.monospace
       ? 'var(--font-family-monospace)'
       : 'var(--font-family-sans-serif)'};
-  font-size: ${props => props.fontSize || '1rem'};
-  color: ${props => props.fg || 'var(--coral)'};
+  font-size: ${(props) => props.fontSize || '1rem'};
+  color: ${(props) => props.fg || 'var(--coral)'};
   cursor: text;
   border: none;
   border-bottom: 1px double var(--coral);
@@ -37,31 +36,31 @@ const BaseInputField = styled.input`
   :-internal-autofill-selected {
     background-color: var(--beige) !important;
   }
-  ${props =>
+  ${(props) =>
     props.filled &&
     css`
       padding: 16px 8px 8px 16px;
       background-color: #73626332;
       border-radius: 8px 8px 0 0;
     `}
-  ${props =>
+  ${(props) =>
     props.disabled &&
     css`
       color: var(--beige);
       border: 1px dotted var(--beige);
       cursor: default;
     `}
-  ${props =>
+  ${(props) =>
     props.multiline &&
     css`
       padding: ${8 - 2}px 0 ${8 - 1}px;
-      ${props =>
+      ${(props) =>
         (props.margin = 'dense') &&
         css`
           padding-top: 4 - 1;
         `}
     `}
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       width: 100%;
@@ -110,12 +109,12 @@ class TextField extends React.Component {
         })
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.props.onChange(e.target.value)
   }
 
-  handleBlur = e => {
-    this.setState(prevState => ({
+  handleBlur = (e) => {
+    this.setState((prevState) => ({
       focus: !prevState.focus,
     }))
   }
@@ -123,7 +122,7 @@ class TextField extends React.Component {
   render() {
     let str = getRandomLatinStr()
     let inputId = this.props.id ? this.props.id : 'gav-' + str
-    const elem = this.props.multiline ? 'textarea' : 'input'
+    // const elem = this.props.multiline ? 'textarea' : 'input'
 
     return (
       <>

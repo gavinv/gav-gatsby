@@ -19,7 +19,7 @@ const Nav = styled.nav`
   padding: 2rem;
 `
 
-const MainNav = props => {
+const MainNav = (props) => {
   const viewport = useWindowSize()
   return (
     <>
@@ -34,9 +34,9 @@ const MainNav = props => {
           <Link to='.' className='projects menu-item' disabled>
             Projects
           </Link>
-          <Link to='.' className='misc menu-item' disabled>
+          {/* <Link to='.' className='misc menu-item' disabled>
             Misc.
-          </Link>
+          </Link> */}
           <Link to='.' className='blog menu-item' disabled>
             Blog
           </Link>

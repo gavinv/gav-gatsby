@@ -120,7 +120,7 @@ function ContactForm(props) {
     },
   }
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     trackCustomEvent({
       category: 'contact form submission',
       action: 'click',
@@ -186,7 +186,6 @@ function ContactForm(props) {
               className={state.isDirty}
               label='First name'
               filled
-              onMouseEnter={() => {inputRef.current.focus()}}
             />
             {state.firstname.error && (
               <p style={errorStyle}>{state.firstname.error}</p>
@@ -255,7 +254,7 @@ function ContactForm(props) {
               aria-label='Cancel form submission'
               label='&times;'
               rad='24px 8px 24px 24px'
-              onClick={e => cancelSubmission(e)}
+              onClick={(e) => cancelSubmission(e)}
             />
             <div data-netlify-recaptcha='true'></div>
             <Button

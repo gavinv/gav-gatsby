@@ -16,10 +16,10 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   }, [state, isDirty])
 
   const validateState = useCallback(() => {
-    const hasErrorInState = Object.keys(validationSchema).some(key => {
+    const hasErrorInState = Object.keys(validationSchema).some((key) => {
       const isInputFieldRequired = validationSchema[key].required
-      const stateValue = state[key].value 
-      const stateError = state[key].error 
+      const stateValue = state[key].value
+      const stateError = state[key].error
 
       return (isInputFieldRequired && !stateValue) || stateError
     })
@@ -28,7 +28,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   }, [state, validationSchema])
 
   const handleInputChange = useCallback(
-    event => {
+    (event) => {
       setIsDirty(true)
 
       const name = event.target.name
@@ -50,7 +50,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
         }
       }
 
-      setState(prevState => ({
+      setState((prevState) => ({
         ...prevState,
         [name]: { value, error },
       }))
@@ -59,7 +59,7 @@ function useForm(stateSchema, validationSchema = {}, callback) {
   )
 
   const handleFormSubmit = useCallback(
-    event => {
+    (event) => {
       event.preventDefault()
       if (!validateState()) {
         callback(state)
