@@ -5,17 +5,14 @@
 
 ---
 
-The live webapp can be viewed at the link below:
-https://gavinvaught.com
+The live webapp can be viewed at <https://gavinvaught.com>
 
 ## What
 
-This project consists a living website built primarily in [React](https://reactjs.org) with [Gatsby.js](https://gatsby.org) as a framework to provide caching, SEO, and other various optimizations out-of-the box.  This also allows easy deployment to [Netlify's](https://netlify.com) CDN as the builds are triggered from Production branch commit hooks and hosting is free for "static" webpages and webapps.
+This project consists a living website built primarily in [React](https://reactjs.org) with [Gatsby.js](https://gatsby.org) as a framework to provide static html files, caching, SEO (React Helmet), and other various optimizations out-of-the-box.  This also allows for easy deployment to [Netlify's](https://netlify.com) CDN as the builds are triggered from Production branch commit hooks and hosting is free for "static" webpages and webapps.
 
-Along with the React components and Gatsby.js configuration, the project includes basic [Gitlab CI](https://gitlab.com/ci) and Cypress automated testing integration.
-
-The result is a robust webapp that is PWA-capable.
+Along with the fully custom React components and some Gatsby.js configurations, this project includes basic [Gitlab CI](https://gitlab.com/ci) integration and [serverless functions](https://www.netlify.com/products/functions).
 
 ## Why
 
-The main end-goal for the development of this project is to be used as a personal portfolio and blog (and of course, the necessary functional contact form).  The blog will have RSS feed capabilities and the portfolio will serve examples or links to any relevant past projects.
+Learning, of course!  While the main end-goal for the development of this project is to be used as a personal portfolio website, it doubles as a canvas for me to experiment with and continually grow as a web engineer.
