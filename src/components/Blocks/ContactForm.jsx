@@ -147,6 +147,8 @@ function ContactForm(props) {
     fontSize: '13px',
   }
 
+  const inputRef = React.createRef()
+
   return (
     <>
       <FormElem
@@ -177,12 +179,14 @@ function ContactForm(props) {
             aria-label='Text input'
           >
             <TextField
+              ref={inputRef}
               onChange={handleInputChange}
               type='text'
               name='firstname'
               className={state.isDirty}
               label='First name'
               filled
+              onMouseEnter={() => {inputRef.current.focus()}}
             />
             {state.firstname.error && (
               <p style={errorStyle}>{state.firstname.error}</p>

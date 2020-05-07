@@ -14,7 +14,7 @@ const BaseLabel = styled.label`
     color: var(--teal);
   }
 `
-
+// const elem = props.multiline ? 'textarea' : 'input'
 const BaseInputField = styled.input`
   display: inline-grid;
   position: relative;
@@ -123,6 +123,7 @@ class TextField extends React.Component {
   render() {
     let str = getRandomLatinStr()
     let inputId = this.props.id ? this.props.id : 'gav-' + str
+    const elem = this.props.multiline ? 'textarea' : 'input'
 
     return (
       <>
