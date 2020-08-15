@@ -31,6 +31,7 @@ const BaseInputField = styled.input`
   border-bottom: 1px double var(--coral);
   transition: border-bottom-color 256ms cubic-bezier(.64,.24,.32,.72) 0ms;
   :focus {
+    outline: none;
     border-bottom-color: var(--teal);
   }
   :-internal-autofill-selected {

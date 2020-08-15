@@ -64,7 +64,7 @@
     "gatsby": "./node_modules/.bin/gatsby",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn run develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "cy:open": "cypress open",
