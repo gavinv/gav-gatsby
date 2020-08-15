@@ -49,7 +49,6 @@
     "cypress": "^4.5.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
-    "globby": "^11.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.5.4",
     "jquery-doubletaptogo": "^3.0.2",
