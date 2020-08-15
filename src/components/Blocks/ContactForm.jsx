@@ -63,13 +63,20 @@ const FormElem = styled.form`
     font-size: 16px;
     color: var(--coral);
     background-color: #73626332;
-    border: 1px solid var(--coral);
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: var(--coral);
     display: grid;
     padding: 0.8rem;
     margin-top: 0.32rem;
     margin-bottom: 1em;
     width: 100%;
     border-radius: 16px 16px 4px 16px;
+    transition: border-bottom-color, color 256ms cubic-bezier(.64,.24,.32,.72) 0ms;
+    :focus {
+      outline: none;
+      border-bottom-color: var(--teal);
+    }
   }
 `
 
