@@ -31,13 +31,13 @@ const MainNav = (props) => {
           <Link to='about' className='about menu-item'>
             About
           </Link>
-          <Link to='.' className='projects menu-item' disabled>
+          <Link to='portfolio' className='projects menu-item'>
             Projects
           </Link>
           {/* <Link to='.' className='misc menu-item' disabled>
             Misc.
           </Link> */}
-          <Link to='.' className='blog menu-item' disabled>
+          <Link to='#' className='blog menu-item' disabled>
             Blog
           </Link>
           <Link to='contact' className='contact menu-item'>
