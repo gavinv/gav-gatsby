@@ -62,6 +62,14 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 4rem;
     letter-spacing: 0.4px;
   }
+  a.styled {
+    text-decoration: underline 1px dotted;
+    transition: all 256ms;
+    :hover {
+      font-weight: 720;
+      font-variation-settings: 'CASL' 1;
+    }
+  }
   .sub-heading {
     font-size: 2rem;
     letter-spacing: 0.2rem;
