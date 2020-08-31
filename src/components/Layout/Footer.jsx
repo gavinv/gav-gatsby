@@ -22,6 +22,7 @@ const FooterInner = styled.div`
   height: 4rem;
   bottom: 4vh;
   padding: 1.4rem;
+  margin-bottom: 1.4rem;
   border-radius: 8px 24px 8px 24px;
   @media screen and (min-width: 640px) {
     right: 4vw;

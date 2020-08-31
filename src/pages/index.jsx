@@ -41,7 +41,6 @@ function Buttons() {
             fg='var(--coral)'
             rad='24px 8px 24px 24px'
             label='Portfolio'
-            disabled
           />
         </Link>
         <Link to='blog'>
