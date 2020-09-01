@@ -3,7 +3,7 @@ import React from 'react'
 import ErrorBoundary from './../../../components/ErrorBoundary'
 import Layout from './../../../components/Layout/Layout'
 import SEO from './../../../components/SEO'
-import Overview from './Overview'
+import Overview from './overview'
 
 export default function DesignDocs() {
   return (
